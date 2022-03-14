@@ -1,0 +1,89 @@
+<div class="text-center">
+	<div class="my-2 pb-3 brand-logo">
+		<hr />
+		<h1 class="p-4">The Homewind</h1>
+		<hr />
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="card-item d-flex justify-content-between">
+						<div class="card-icon">
+							<fa-icon
+								[icon]="faUserList"
+								class="fa-3x text-sky"
+							></fa-icon>
+						</div>
+						<div class="card-text text-right">
+							<h5>Total Renter</h5>
+							<h3>{{ flats.length }}</h3>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer">
+					<a
+						routerLink="/renter-list"
+						class="text-capitalize text-secondary"
+						><fa-icon [icon]="faList" class="me-2"></fa-icon>view
+						list</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="card-item d-flex justify-content-between">
+						<div class="card-icon">
+							<fa-icon
+								[icon]="faBuilding"
+								class="fa-3x text-sky"
+							></fa-icon>
+						</div>
+						<div class="card-text text-right">
+							<h5>Total Building</h5>
+							<h3>{{ buildings.length }}</h3>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer">
+					<a
+						routerLink="/building-list"
+						class="text-capitalize text-secondary"
+						><fa-icon [icon]="faList" class="me-2"></fa-icon>view
+						list</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="card-item d-flex justify-content-between">
+						<div class="card-icon">
+							<fa-icon
+								[icon]="faHouse"
+								class="fa-3x text-sky"
+							></fa-icon>
+						</div>
+						<div class="card-text text-right">
+							<h5>Total Flat</h5>
+							<h3>{{ flats.length }}</h3>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer">
+					<a routerLink="/flat" class="text-capitalize text-secondary"
+						><fa-icon [icon]="faList" class="me-2"></fa-icon>view
+						list</a
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

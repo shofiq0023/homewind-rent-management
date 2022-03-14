@@ -1,0 +1,75 @@
+<div class="container-fluid">
+	<h2 class="mb-3">Add building</h2>
+	<a routerLink="/building-list" class="btn btn-primary mb-3"
+		><fa-icon [icon]="faArrowLeft" class="me-2"></fa-icon> Go back to
+		list</a
+	>
+	<a routerLink="/renter-list" class="btn btn-primary mb-3 ms-2"
+		><fa-icon [icon]="faUser" class="me-2"></fa-icon>Renter List</a
+	>
+	<a routerLink="/flat-list" class="btn btn-primary mb-3 ms-2"
+		><fa-icon [icon]="faHouse" class="me-2"></fa-icon>Flat List</a
+	>
+
+	<form
+		class="form p-3 rounded"
+		#buildingForm="ngForm"
+		(ngSubmit)="onSubmit(buildingForm)"
+	>
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Building name:</h5>
+			</div>
+			<div class="col-8">
+				<input
+					type="text"
+					name="name"
+					[(ngModel)]="name"
+					class="form-control"
+					placeholder="eg.. Chitra"
+				/>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Building number:</h5>
+			</div>
+			<div class="col-8">
+				<input
+					type="text"
+					name="number"
+					[(ngModel)]="number"
+					class="form-control"
+					placeholder="eg.. 151/2"
+				/>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Total floor:</h5>
+			</div>
+			<div class="col-8">
+				<input
+					type="number"
+					name="floor"
+					[(ngModel)]="floor"
+					class="form-control"
+					placeholder="eg.. 8/20"
+				/>
+			</div>
+		</div>
+
+		<div class="row mt-4 mb-3">
+			<div class="col-4">
+				<input
+					type="submit"
+					value="submit"
+					class="form-control btn btn-primary"
+				/>
+			</div>
+		</div>
+		<p class="text-success">{{ message }}</p>
+	</form>
+</div>

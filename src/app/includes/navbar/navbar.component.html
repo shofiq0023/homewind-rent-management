@@ -1,0 +1,277 @@
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+	<div class="container-fluid">
+		<button
+			class="navbar-toggler bg-dark"
+			type="button"
+			data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent"
+			aria-expanded="false"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="container-fluid">
+				<div class="row">
+					<!-- Side bar starts -->
+					<div class="col-xl-2 col-lg-3 sidebar bg-dark fixed-top">
+						<a
+							routerLink="/home"
+							class="navbar-brand d-block mx-auto text-center py-3 mb-3"
+							>Homewind</a
+						>
+						<ul class="navbar-nav flex-column">
+							<!-- Dashboard -->
+							<li
+								class="navbar-item"
+								routerLinkActive="link-active"
+							>
+								<a
+									routerLink="/home"
+									class="nav-link nav-link-main text-white p-3 mb-2 sidebar-link"
+								>
+									<fa-icon [icon]="faHome"></fa-icon>
+									Dashboard
+								</a>
+							</li>
+
+							<!-- Renter -->
+							<li
+								class="navbar-item"
+								routerLinkActive="link-active"
+							>
+								<a
+									class="nav-link nav-link-main text-white p-3 mb-2 sidebar-link"
+									(click)="renterCollapse.toggle()"
+									[attr.aria-expanded]="!isRenterCollapsed"
+								>
+									<fa-icon [icon]="faUser"></fa-icon>
+									Renter
+									<fa-icon
+										[icon]="faAngleDown"
+										class="ms-1"
+									></fa-icon>
+								</a>
+								<div
+									#renterCollapse="ngbCollapse"
+									[(ngbCollapse)]="isRenterCollapsed"
+								>
+									<ul>
+										<!-- Renter list -->
+										<li class="navbar-item ms-4">
+											<a
+												routerLink="/renter-list"
+												class="nav-link"
+											>
+												<fa-icon
+													[icon]="faUserFriends"
+												></fa-icon>
+												Renter list
+											</a>
+										</li>
+										<!-- add renter -->
+										<li class="navbar-item ms-4">
+											<a
+												routerLink="/renter-add"
+												class="nav-link"
+											>
+												<fa-icon
+													[icon]="faUserPlus"
+												></fa-icon>
+												Add renter
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<!-- building -->
+							<li
+								class="navbar-item"
+								routerLinkActive="link-active"
+							>
+								<a
+									class="nav-link nav-link-main text-white p-3 mb-2 sidebar-link"
+									(click)="buildingCollapse.toggle()"
+									[attr.aria-expanded]="!isBuildingCollapsed"
+								>
+									<fa-icon [icon]="faBuilding"></fa-icon>
+									Building
+									<fa-icon
+										[icon]="faAngleDown"
+										class="ms-1"
+									></fa-icon>
+								</a>
+								<div
+									#buildingCollapse="ngbCollapse"
+									[(ngbCollapse)]="isBuildingCollapsed"
+								>
+									<ul>
+										<!-- building list -->
+										<li class="navbar-item ms-4">
+											<a
+												routerLink="/building-list"
+												class="nav-link"
+											>
+												<fa-icon
+													[icon]="faCity"
+												></fa-icon>
+												Building list
+											</a>
+										</li>
+										<!-- add building -->
+										<li class="navbar-item ms-4">
+											<a
+												routerLink="/building-add"
+												class="nav-link"
+											>
+												<fa-icon
+													[icon]="faBuilding"
+												></fa-icon>
+												Add building
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<!-- flat -->
+							<li
+								class="navbar-item"
+								routerLinkActive="link-active"
+							>
+								<a
+									class="nav-link nav-link-main text-white p-3 mb-2 sidebar-link"
+									(click)="flatCollapse.toggle()"
+									[attr.aria-expanded]="!isFlatCollapsed"
+								>
+									<fa-icon [icon]="faHouseUser"></fa-icon>
+									Flat
+									<fa-icon
+										[icon]="faAngleDown"
+										class="ms-1"
+									></fa-icon>
+								</a>
+								<div
+									#flatCollapse="ngbCollapse"
+									[(ngbCollapse)]="isFlatCollapsed"
+								>
+									<ul>
+										<!-- flat list -->
+										<li class="navbar-item ms-4">
+											<a
+												routerLink="/flat-list"
+												class="nav-link"
+											>
+												<fa-icon
+													[icon]="faHouse"
+												></fa-icon>
+												Flat list
+											</a>
+										</li>
+										<!-- add building -->
+										<li class="navbar-item ms-4">
+											<a
+												routerLink="/flat-add"
+												class="nav-link"
+											>
+												<fa-icon
+													[icon]="faHouseUser"
+												></fa-icon>
+												Add Flat
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<!-- bill -->
+							<li
+								class="navbar-item"
+								routerLinkActive="link-active"
+							>
+								<a
+									class="nav-link nav-link-main text-white p-3 mb-2 sidebar-link"
+									(click)="billCollapse.toggle()"
+									[attr.aria-expanded]="!isBillCollapsed"
+								>
+									<fa-icon [icon]="faInvoice"></fa-icon>
+									Bill
+									<fa-icon
+										[icon]="faAngleDown"
+										class="ms-1"
+									></fa-icon>
+								</a>
+								<div
+									#billCollapse="ngbCollapse"
+									[(ngbCollapse)]="isBillCollapsed"
+								>
+									<ul>
+										<!-- bill history -->
+										<li class="navbar-item ms-4">
+											<a
+												routerLink="/bill-history"
+												class="nav-link"
+											>
+												<fa-icon
+													[icon]="faMoneyCheck"
+												></fa-icon>
+												Bill history
+											</a>
+										</li>
+										<!-- add building -->
+										<li class="navbar-item ms-4">
+											<a
+												routerLink="/bill-pay"
+												class="nav-link"
+											>
+												<fa-icon
+													[icon]="faMoney"
+												></fa-icon>
+												Pay bill
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<!-- reciept -->
+							<li
+								class="navbar-item"
+								routerLinkActive="link-active"
+							>
+								<a
+									routerLink="/reciept"
+									class="nav-link nav-link-main text-white p-3 mb-2 sidebar-link"
+								>
+									<fa-icon [icon]="faReceipt"></fa-icon>
+									Reciept
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!-- Sider bar ends -->
+					<div
+						class="col-xl-10 col-lg-9 ms-auto fixed-top py-1 top-navbar shadow"
+					>
+						<div class="row align-items-center">
+							<div class="col-md-12 text-end">
+								<a
+									href="#"
+									class="text-red"
+									placement="left"
+									ngbTooltip="Sign out"
+									><fa-icon
+										[icon]="faSignOut"
+										class="fa-2x"
+									></fa-icon
+								></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>

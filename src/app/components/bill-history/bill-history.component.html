@@ -1,0 +1,38 @@
+<div class="container-fluid">
+	<h2 class="mb-3">Bill history</h2>
+	<a routerLink="/bill-pay" class="btn btn-primary mb-3"
+		>Pay bill <fa-icon [icon]="faPlus" class="ms-2"></fa-icon>
+	</a>
+	<a routerLink="/renter-list" class="btn btn-primary mb-3 ms-2"
+		>Renter List <fa-icon [icon]="faUser" class="ms-2"></fa-icon>
+	</a>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Renter name</th>
+				<th scope="col">Bill type</th>
+				<th scope="col">Amount</th>
+				<th scope="col" class="text-center">Manage</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let bill of bills; index as i">
+				<th scope="row">{{ i + 1 }}</th>
+				<td>{{ bill.renterName }}</td>
+				<td>{{ bill.billType }}</td>
+				<td>{{ bill.amount }}</td>
+				<td class="text-center">
+					<button
+						class="btn btn-danger btn-sm"
+						(click)="deleteBill(bill)"
+					>
+						<fa-icon [icon]="faTrash"></fa-icon>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p *ngIf="bills.length == 0">No billing history</p>
+</div>

@@ -1,0 +1,41 @@
+<div class="container-fluid">
+	<h2 class="mb-3">Building list</h2>
+	<a routerLink="/building-add" class="btn btn-primary mb-3"
+		>Add building <fa-icon [icon]="faPlus" class="ms-2"></fa-icon>
+	</a>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Building name</th>
+				<th scope="col">Number</th>
+				<th scope="col">Total Floor</th>
+				<th scope="col" class="text-center">Manage</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let building of buildings; index as i">
+				<th scope="row">{{ i + 1 }}</th>
+				<td>{{ building.name }}</td>
+				<td>{{ building.number }}</td>
+				<td>{{ building.floor }}</td>
+				<td class="text-center">
+					<button
+						class="btn btn-primary btn-sm me-4"
+						(click)="openModal(building)"
+					>
+						<fa-icon [icon]="faPencil"></fa-icon>
+					</button>
+					<button
+						class="btn btn-danger btn-sm"
+						(click)="deleteBuilding(building)"
+					>
+						<fa-icon [icon]="faTrash"></fa-icon>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p *ngIf="buildings.length == 0">No buildings were found</p>
+</div>

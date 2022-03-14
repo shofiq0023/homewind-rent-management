@@ -1,0 +1,35 @@
+<div class="container" *ngIf="building">
+	<form class="p-3" (ngSubmit)="onSubmit()">
+		<input type="hidden" name="id" [(ngModel)]="building.id" />
+		<div class="form-group mb-2">
+			<label class="mb-1">Building name:</label>
+			<input
+				type="text"
+				class="form-control"
+				name="name"
+				[(ngModel)]="building.name"
+			/>
+		</div>
+
+		<div class="form-group mb-2">
+			<label class="mb-1">Building number:</label>
+			<input
+				type="text"
+				class="form-control"
+				name="number"
+				[(ngModel)]="building.number"
+			/>
+		</div>
+
+		<div class="form-group mb-2">
+			<label class="mb-1">Total Floor:</label>
+			<input
+				type="number"
+				class="form-control"
+				name="floor"
+				[(ngModel)]="building.floor"
+			/>
+		</div>
+		<input type="submit" class="form-control btn btn-primary" />
+	</form>
+</div>

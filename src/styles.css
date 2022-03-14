@@ -1,1 +1,93 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800;900&display=swap");
+
+:root {
+	--blue-dark-color: #173f5f;
+	--blue-light-color: #20639b;
+	--sky-color: #3caea3;
+	--yellow-color: #f6d55c;
+	--red-color: #ed553b;
+}
+body {
+	font-family: "Nunito", sans-serif;
+}
+ul,
+ol {
+	list-style: none;
+}
+a,
+a:hover {
+	text-decoration: none;
+}
+img {
+	vertical-align: center;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+img,
+ul,
+ol,
+li {
+	padding: 0;
+	margin: 0;
+}
+.form {
+	background-color: #f3f3f3;
+}
+
+/* ========= Sidebar =========== */
+.sidebar {
+	height: 100vh;
+	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+}
+.navbar-brand {
+	border-bottom: 1px groove #eee;
+}
+.navbar-item {
+	cursor: pointer;
+}
+.sidebar-link {
+	border-radius: 5px;
+	transition: all 0.3s;
+}
+.sidebar-link:hover {
+	background: #323232;
+}
+.navbar-item.link-active .nav-link-main {
+	background: var(--blue-light-color);
+}
+.top-navbar {
+	background: #4b4b4b;
+}
+/* ========= Sidebar =========== */
+.text-red {
+	color: var(--red-color);
+}
+.text-red:hover {
+	color: #ff644a;
+}
+.brand-logo {
+	display: inline-block;
+}
+.brand-logo hr {
+	border: 3px solid var(--blue-light-color);
+	border-radius: 10px;
+}
+.brand-logo h1 {
+	font-weight: 700;
+}
+
+@media (max-width: 768px) {
+	.top-navbar {
+		position: static;
+	}
+	.sidebar {
+		position: static;
+		height: auto;
+	}
+}

@@ -1,0 +1,106 @@
+<div class="container" *ngIf="renter">
+	<form class="p-3" (ngSubmit)="onSubmit()">
+		<input type="hidden" name="id" [(ngModel)]="renter.id" />
+		<div class="form-group mb-2">
+			<label class="mb-1">Full name:</label>
+			<input
+				type="text"
+				class="form-control"
+				name="fullName"
+				[(ngModel)]="renter.fullName"
+				required
+			/>
+		</div>
+		<div class="form-group mb-2">
+			<label class="mb-1">Mobile:</label>
+			<input
+				type="tel"
+				class="form-control"
+				name="mobile"
+				[(ngModel)]="renter.mobile"
+				required
+			/>
+		</div>
+		<div class="form-group mb-2">
+			<label class="mb-1">E-Mail:</label>
+			<input
+				type="email"
+				class="form-control"
+				name="email"
+				[(ngModel)]="renter.email"
+				disabled
+			/>
+		</div>
+		<div class="form-group mb-2">
+			<label class="mb-1">Parmanent Address:</label>
+			<input
+				type="text"
+				class="form-control"
+				name="address"
+				[(ngModel)]="renter.address"
+				disabled
+			/>
+		</div>
+		<div class="form-group mb-2">
+			<label class="mb-1">Deal:</label>
+			<textarea
+				name="deal"
+				[(ngModel)]="renter.deal"
+				class="form-control"
+				required
+			></textarea>
+		</div>
+		<div class="form-group mb-2">
+			<label class="mb-1"
+				>Building: (currently : <b>{{ renter.building }}</b
+				>)</label
+			>
+			<select
+				class="form-select"
+				name="building"
+				[(ngModel)]="renter.building"
+				required
+			>
+				<option value="{{ renter.building }}" hidden selected></option>
+				<option value="151/1">151/1</option>
+				<option value="151/2">151/2</option>
+				<option value="151/3">151/3</option>
+			</select>
+		</div>
+		<div class="form-group mb-2">
+			<label class="mb-1"
+				>Floor: (currently : <b>{{ renter.floor }}</b
+				>)</label
+			>
+			<select
+				class="form-select"
+				name="floor"
+				[(ngModel)]="renter.floor"
+				required
+			>
+				<option value="{{ renter.floor }}" hidden selected></option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+		</div>
+		<div class="form-group mb-2">
+			<label class="mb-1"
+				>Flat: (currently : <b>{{ renter.flat }}</b
+				>)</label
+			>
+			<select
+				class="form-select"
+				name="flat"
+				[(ngModel)]="renter.flat"
+				required
+			>
+				<option value="{{ renter.flat }}" hidden selected></option>
+				<option value="1-A">1-A</option>
+				<option value="1-B">1-B</option>
+				<option value="1-C">1-C</option>
+			</select>
+		</div>
+		<input type="submit" class="form-control btn btn-primary" />
+	</form>
+</div>

@@ -1,0 +1,77 @@
+<div class="container-fluid">
+	<h2 class="mb-3">Pay Bill</h2>
+	<a routerLink="/bill-history" class="btn btn-primary mb-3"
+		><fa-icon [icon]="faArrowLeft" class="me-2"></fa-icon> Go back to
+		history</a
+	>
+	<a routerLink="/renter-list" class="btn btn-primary mb-3 ms-2"
+		><fa-icon [icon]="faUser" class="me-2"></fa-icon>Renter list</a
+	>
+
+	<form
+		class="form p-3 rounded"
+		#billForm="ngForm"
+		(ngSubmit)="onSubmit(billForm)"
+	>
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Renter name:</h5>
+			</div>
+			<div class="col-8">
+				<select
+					class="form-select"
+					name="renterName"
+					[(ngModel)]="renterName"
+				>
+					<option value="MD KArim Islam">MD KArim Islam</option>
+					<option value="Kanon Hasan">Kanon Hasan</option>
+					<option value="Akash Uddin">Akash Uddin</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Bill type:</h5>
+			</div>
+			<div class="col-8">
+				<select
+					class="form-select"
+					name="billType"
+					[(ngModel)]="billType"
+				>
+					<option value="Utility bill">Utility bill</option>
+					<option value="Electric bill">Electric bill</option>
+					<option value="Gas bill">Gas bill</option>
+					<option value="Water bill">Water bill</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Amount:</h5>
+			</div>
+			<div class="col-8">
+				<input
+					type="number"
+					name="amount"
+					[(ngModel)]="amount"
+					class="form-control"
+					placeholder="eg.. 2000 or 5000"
+				/>
+			</div>
+		</div>
+
+		<div class="row mt-4 mb-3">
+			<div class="col-4">
+				<input
+					type="submit"
+					value="submit"
+					class="form-control btn btn-primary"
+				/>
+			</div>
+		</div>
+		<p class="text-success">{{ message }}</p>
+	</form>
+</div>

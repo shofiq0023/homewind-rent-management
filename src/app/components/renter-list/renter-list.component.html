@@ -1,0 +1,47 @@
+<div class="container-fluid">
+	<h2 class="mb-3">Renter List</h2>
+	<a routerLink="/renter-add" class="btn btn-primary mb-3"
+		>Add Renter <fa-icon [icon]="faPlus" class="ms-2"></fa-icon>
+	</a>
+	<a routerLink="/bill-history" class="btn btn-primary mb-3 ms-2"
+		>Bill History <fa-icon [icon]="faInvoice" class="ms-2"></fa-icon>
+	</a>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Full name</th>
+				<th scope="col">Mobile</th>
+				<th scope="col">Building</th>
+				<th scope="col">Floor</th>
+				<th scope="col">Flat</th>
+				<th scope="col" class="text-center">Manage</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let renter of renters; index as i">
+				<th scope="row">{{ i + 1 }}</th>
+				<td>{{ renter.fullName }}</td>
+				<td>{{ renter.mobile }}</td>
+				<td>{{ renter.building }}</td>
+				<td>{{ renter.floor }}</td>
+				<td>{{ renter.flat }}</td>
+				<td class="text-center">
+					<button
+						class="btn btn-primary btn-sm me-4"
+						(click)="openModal(renter)"
+					>
+						<fa-icon [icon]="faPencil"></fa-icon>
+					</button>
+					<button
+						class="btn btn-danger btn-sm"
+						(click)="deleteRenter(renter)"
+					>
+						<fa-icon [icon]="faTrash"></fa-icon>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p *ngIf="renters.length == 0">No renters were found</p>
+</div>

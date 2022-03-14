@@ -1,0 +1,163 @@
+<div class="container-fluid">
+	<h2 class="mb-3">Add Renter</h2>
+	<a routerLink="/renter-list" class="btn btn-primary mb-3"
+		><fa-icon [icon]="faArrowLeft" class="me-2"></fa-icon> Go back to
+		list</a
+	>
+	<a routerLink="/building-list" class="btn btn-primary mb-3 ms-2"
+		><fa-icon [icon]="faCity" class="me-2"></fa-icon>Building list</a
+	>
+	<form
+		class="form p-3 rounded"
+		#renterForm="ngForm"
+		(ngSubmit)="onSubmit(renterForm)"
+	>
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Full name:</h5>
+			</div>
+			<div class="col-8">
+				<input
+					type="text"
+					name="fullName"
+					[(ngModel)]="fullName"
+					class="form-control"
+					placeholder="eg.. MD Karim Islam"
+					required
+				/>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Mobile number:</h5>
+			</div>
+			<div class="col-8">
+				<input
+					type="text"
+					name="mobile"
+					[(ngModel)]="mobile"
+					class="form-control"
+					placeholder="eg.. 01648898788"
+					required
+				/>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>E-Mail:</h5>
+			</div>
+			<div class="col-8">
+				<input
+					type="email"
+					name="email"
+					[(ngModel)]="email"
+					class="form-control"
+					placeholder="mdkarim094@gmail.com"
+					required
+				/>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Parmanent Address:</h5>
+			</div>
+			<div class="col-8">
+				<input
+					type="text"
+					name="address"
+					[(ngModel)]="address"
+					class="form-control"
+					placeholder="20/8, Raipur, Narshingdi"
+					required
+				/>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Deal:</h5>
+			</div>
+			<div class="col-8">
+				<textarea
+					name="deal"
+					[(ngModel)]="deal"
+					class="form-control"
+					placeholder="deal with the landlord"
+					required
+				></textarea>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Building:</h5>
+			</div>
+			<div class="col-8">
+				<select
+					class="form-select"
+					name="building"
+					[(ngModel)]="building"
+					required
+				>
+					<option
+						*ngFor="let building of buildings"
+						value="{{ building.name }}"
+					>
+						{{ building.name }}
+					</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Floor:</h5>
+			</div>
+			<div class="col-8">
+				<select
+					class="form-select"
+					name="floor"
+					[(ngModel)]="floor"
+					required
+				>
+					<option value="">select floor number...</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Flat:</h5>
+			</div>
+			<div class="col-8">
+				<select
+					class="form-select"
+					name="flat"
+					[(ngModel)]="flat"
+					required
+				>
+					<option value="">select flat number...</option>
+					<option value="1-A">1-A</option>
+					<option value="1-B">1-B</option>
+					<option value="1-C">1-C</option>
+				</select>
+			</div>
+		</div>
+		<div class="row mt-4 mb-3">
+			<div class="col-4">
+				<input
+					type="submit"
+					value="submit"
+					class="form-control btn btn-primary"
+				/>
+			</div>
+		</div>
+		<p class="text-success">{{ message }}</p>
+	</form>
+</div>

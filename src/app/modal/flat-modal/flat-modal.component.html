@@ -1,0 +1,56 @@
+<div class="container" *ngIf="flat">
+	<form class="p-3">
+		<div class="form-group mb-2">
+			<label class="mb-1"
+				>Building name: (currently : <b>{{ flat.buildingName }}</b
+				>)</label
+			>
+			<select
+				class="form-select"
+				name="buildingName"
+				[(ngModel)]="flat.buildingName"
+			>
+				<option
+					value="{{ flat.buildingName }}"
+					hidden
+					selected
+				></option>
+				<option value="Chitra">Chitra</option>
+				<option value="Asia Monjil">Asia Monjil</option>
+				<option value="Banglo">Banglo</option>
+			</select>
+		</div>
+
+		<div class="form-group mb-2">
+			<label class="mb-1"
+				>Floor: (currently : <b>{{ flat.buildingFloor }}</b
+				>)</label
+			>
+			<select
+				class="form-select"
+				name="buildingFloor"
+				[(ngModel)]="flat.buildingFloor"
+			>
+				<option
+					value="{{ flat.buildingFloor }}"
+					hidden
+					selected
+				></option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+		</div>
+
+		<div class="form-group mb-2">
+			<label class="mb-1">Flat number:</label>
+			<input
+				type="text"
+				name="flatNumber"
+				[(ngModel)]="flat.flatNumber"
+				class="form-control"
+			/>
+		</div>
+		<input type="submit" class="form-control btn btn-primary" />
+	</form>
+</div>

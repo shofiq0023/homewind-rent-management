@@ -1,0 +1,82 @@
+<div class="container-fluid">
+	<h2 class="mb-3">Add Flat</h2>
+	<a routerLink="/flat-list" class="btn btn-primary mb-3"
+		><fa-icon [icon]="faArrowLeft" class="me-2"></fa-icon> Go back to
+		list</a
+	>
+	<a routerLink="/building-list" class="btn btn-primary mb-3 ms-2"
+		><fa-icon [icon]="faCity" class="me-2"></fa-icon>Building list</a
+	>
+	<a routerLink="/renter-list" class="btn btn-primary mb-3 ms-2"
+		><fa-icon [icon]="faUser" class="me-2"></fa-icon>Renter list</a
+	>
+
+	<form
+		class="form p-3 rounded"
+		#flatForm="ngForm"
+		(ngSubmit)="onSubmit(flatForm)"
+	>
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Building name:</h5>
+			</div>
+			<div class="col-8">
+				<select
+					class="form-select"
+					name="buildingName"
+					[(ngModel)]="buildingName"
+				>
+					<option value="" selected hidden>select building...</option>
+					<option value="Chitra">Chitra</option>
+					<option value="Asia monjil">Asia monjil</option>
+					<option value="Banglo">Banglo</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Floor:</h5>
+			</div>
+			<div class="col-8">
+				<select
+					class="form-select"
+					name="buildingFloor"
+					[(ngModel)]="buildingFloor"
+				>
+					<option value="" selected hidden>select floor...</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Flat number:</h5>
+			</div>
+			<div class="col-8">
+				<input
+					type="text"
+					name="flatNumber"
+					[(ngModel)]="flatNumber"
+					class="form-control"
+					placeholder="eg.. 3-B or 2-A"
+				/>
+			</div>
+		</div>
+
+		<div class="row mt-4 mb-3">
+			<div class="col-4">
+				<input
+					type="submit"
+					value="submit"
+					class="form-control btn btn-primary"
+				/>
+			</div>
+		</div>
+		<p class="text-success">{{ message }}</p>
+	</form>
+</div>
