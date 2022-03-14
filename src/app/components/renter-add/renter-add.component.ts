@@ -31,7 +31,6 @@ export class RenterAddComponent implements OnInit {
 	flat!: string;
 
 	buildings: Building[] = [];
-	floors: number[] = [];
 
 	constructor(
 		private renterService: RenterService,
@@ -43,6 +42,7 @@ export class RenterAddComponent implements OnInit {
 		this.buildingService.getBuildings().subscribe((res) => {
 			this.buildings = res;
 		});
+		this.buildings.forEach((item) => console.log(item));
 	}
 
 	onSubmit(form: NgForm) {
@@ -60,5 +60,9 @@ export class RenterAddComponent implements OnInit {
 			this.message = 'Add successful';
 			form.reset();
 		});
+	}
+
+	setFloor(buildings: string) {
+		console.log(buildings);
 	}
 }
