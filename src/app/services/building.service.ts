@@ -9,6 +9,9 @@ import {
 	deleteDoc,
 	docData,
 	setDoc,
+	where,
+	query,
+	getDocs,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -29,6 +32,19 @@ export class BuildingService {
 	getBuildingById(buildingId: string): Observable<Building> {
 		const buildingRef = doc(this.firestore, `buildings/${buildingId}`);
 		return docData(buildingRef, { idField: 'id' }) as Observable<Building>;
+	}
+
+	async getFloor(buildingName: string) {
+		let newFloor;
+		const querySnapshot = await getDocs(
+			query(this.buildingCollectionRef, where('name', '==', buildingName))
+		);
+
+		querySnapshot.forEach((doc) => {
+			newFloor = doc.data()['floor'];
+		});
+
+		return newFloor;
 	}
 
 	addBuilding(building: Building) {

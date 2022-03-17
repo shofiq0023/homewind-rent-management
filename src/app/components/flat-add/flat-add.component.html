@@ -25,11 +25,14 @@
 					class="form-select"
 					name="buildingName"
 					[(ngModel)]="buildingName"
+					(change)="setFloor(buildingName)"
 				>
-					<option value="" selected hidden>select building...</option>
-					<option value="Chitra">Chitra</option>
-					<option value="Asia monjil">Asia monjil</option>
-					<option value="Banglo">Banglo</option>
+					<option
+						*ngFor="let building of buildings"
+						value="{{ building.name }}"
+					>
+						{{ building.name }}
+					</option>
 				</select>
 			</div>
 		</div>
@@ -44,11 +47,9 @@
 					name="buildingFloor"
 					[(ngModel)]="buildingFloor"
 				>
-					<option value="" selected hidden>select floor...</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
+					<option *ngFor="let floor of floors" value="{{ floor }}">
+						{{ floor }}
+					</option>
 				</select>
 			</div>
 		</div>

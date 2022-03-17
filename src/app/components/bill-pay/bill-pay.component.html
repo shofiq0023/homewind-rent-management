@@ -23,9 +23,12 @@
 					name="renterName"
 					[(ngModel)]="renterName"
 				>
-					<option value="MD KArim Islam">MD KArim Islam</option>
-					<option value="Kanon Hasan">Kanon Hasan</option>
-					<option value="Akash Uddin">Akash Uddin</option>
+					<option
+						*ngFor="let renter of renters"
+						value="{{ renter.fullName }}"
+					>
+						{{ renter.fullName }}
+					</option>
 				</select>
 			</div>
 		</div>

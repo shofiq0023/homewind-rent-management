@@ -5,6 +5,8 @@ import {
 	faCity,
 	faUser,
 } from '@fortawesome/free-solid-svg-icons';
+import { Building } from 'src/app/models/building.model';
+import { BuildingService } from 'src/app/services/building.service';
 import { FlatService } from 'src/app/services/flat.service';
 
 @Component({
@@ -23,9 +25,19 @@ export class FlatAddComponent implements OnInit {
 	buildingFloor!: number;
 	flatNumber!: string;
 
-	constructor(private flatService: FlatService) {}
+	buildings: Building[] = [];
+	floors: number[] = [];
 
-	ngOnInit(): void {}
+	constructor(
+		private flatService: FlatService,
+		private buildingService: BuildingService
+	) {}
+
+	ngOnInit(): void {
+		this.buildingService.getBuildings().subscribe((res) => {
+			this.buildings = res;
+		});
+	}
 
 	onSubmit(form: NgForm) {
 		const newFlat = {
@@ -38,5 +50,14 @@ export class FlatAddComponent implements OnInit {
 			form.reset();
 			this.message = 'New flat added';
 		});
+	}
+
+	async setFloor(buildingName: string) {
+		let newFloor = await this.buildingService.getFloor(buildingName);
+		this.floors = [];
+		// @ts-ignore
+		for (let i = 1; i <= newFloor; i++) {
+			this.floors.push(i);
+		}
 	}
 }

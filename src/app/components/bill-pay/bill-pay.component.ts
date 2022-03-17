@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { faLongArrowAltLeft, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Renter } from 'src/app/models/renter.model';
 import { BillService } from 'src/app/services/bill.service';
+import { RenterService } from 'src/app/services/renter.service';
 
 @Component({
 	selector: 'app-bill-pay',
@@ -18,9 +20,18 @@ export class BillPayComponent implements OnInit {
 	billType!: string;
 	amount!: number;
 
-	constructor(private billService: BillService) {}
+	renters: Renter[] = [];
 
-	ngOnInit(): void {}
+	constructor(
+		private billService: BillService,
+		private renterService: RenterService
+	) {}
+
+	ngOnInit(): void {
+		this.renterService.getRenters().subscribe((res) => {
+			this.renters = res;
+		});
+	}
 
 	onSubmit(form: NgForm) {
 		const newBill = {

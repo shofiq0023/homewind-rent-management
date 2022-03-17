@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { getDoc } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { faLongArrowAltLeft, faCity } from '@fortawesome/free-solid-svg-icons';
 import { Building } from 'src/app/models/building.model';
@@ -31,6 +32,8 @@ export class RenterAddComponent implements OnInit {
 	flat!: string;
 
 	buildings: Building[] = [];
+	floors: number[] = [];
+	flats: string[] = [];
 
 	constructor(
 		private renterService: RenterService,
@@ -42,7 +45,6 @@ export class RenterAddComponent implements OnInit {
 		this.buildingService.getBuildings().subscribe((res) => {
 			this.buildings = res;
 		});
-		this.buildings.forEach((item) => console.log(item));
 	}
 
 	onSubmit(form: NgForm) {
@@ -62,7 +64,22 @@ export class RenterAddComponent implements OnInit {
 		});
 	}
 
-	setFloor(buildings: string) {
-		console.log(buildings);
+	async setFloor(buildingName: string) {
+		let newFloor = await this.buildingService.getFloor(buildingName);
+		this.floors = [];
+
+		// @ts-ignore
+		for (let i = 1; i <= newFloor; i++) {
+			this.floors.push(i);
+		}
+	}
+
+	async getFlats(floor: number) {
+		let newFlats = await this.flatService.getFlatByFloor(floor);
+		this.flats = [];
+
+		newFlats.forEach((doc) => {
+			this.flats.push(doc);
+		});
 	}
 }

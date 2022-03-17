@@ -31,7 +31,6 @@ export class RenterListComponent implements OnInit {
 	ngOnInit(): void {
 		this.renterService.getRenters().subscribe((renter) => {
 			this.renters = renter;
-			console.log(renter);
 		});
 	}
 

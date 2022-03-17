@@ -8,6 +8,9 @@ import {
 	doc,
 	deleteDoc,
 	setDoc,
+	getDocs,
+	where,
+	query,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -23,6 +26,19 @@ export class FlatService {
 		return collectionData(this.flatCollectionRef, {
 			idField: 'id',
 		}) as Observable<Flat[]>;
+	}
+
+	async getFlatByFloor(floor: number) {
+		let newFlats: string[] = [];
+		const querySnapshot = await getDocs(
+			query(this.flatCollectionRef, where('buildingFloor', '==', floor))
+		);
+
+		querySnapshot.forEach((doc) => {
+			newFlats.push(doc.data()['flatNumber']);
+		});
+
+		return newFlats;
 	}
 
 	addFlat(flat: Flat) {

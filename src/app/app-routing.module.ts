@@ -12,6 +12,7 @@ import { RenterAddComponent } from './components/renter-add/renter-add.component
 import { RenterListComponent } from './components/renter-list/renter-list.component';
 
 const routes: Routes = [
+	{ path: '', redirectTo: 'home', pathMatch: 'full' },
 	{ path: 'home', component: HomeComponent },
 	{ path: 'renter-list', component: RenterListComponent },
 	{ path: 'renter-add', component: RenterAddComponent },
