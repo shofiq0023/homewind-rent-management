@@ -1,24 +1,13 @@
 <div class="container" *ngIf="flat">
-	<form class="p-3">
+	<form class="p-3" (ngSubmit)="onSubmit(flat)">
 		<div class="form-group mb-2">
-			<label class="mb-1"
-				>Building name: (currently : <b>{{ flat.buildingName }}</b
-				>)</label
-			>
-			<select
-				class="form-select"
-				name="buildingName"
-				[(ngModel)]="flat.buildingName"
-			>
-				<option
-					value="{{ flat.buildingName }}"
-					hidden
-					selected
-				></option>
-				<option value="Chitra">Chitra</option>
-				<option value="Asia Monjil">Asia Monjil</option>
-				<option value="Banglo">Banglo</option>
-			</select>
+			<label class="mb-1">Building name: </label>
+			<input
+				type="text"
+				class="form-control"
+				value="{{ flat.buildingName }}"
+				disabled
+			/>
 		</div>
 
 		<div class="form-group mb-2">
@@ -26,20 +15,12 @@
 				>Floor: (currently : <b>{{ flat.buildingFloor }}</b
 				>)</label
 			>
-			<select
-				class="form-select"
-				name="buildingFloor"
-				[(ngModel)]="flat.buildingFloor"
-			>
-				<option
-					value="{{ flat.buildingFloor }}"
-					hidden
-					selected
-				></option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-			</select>
+			<input
+				type="text"
+				class="form-control"
+				value="{{ flat.buildingFloor }}"
+				disabled
+			/>
 		</div>
 
 		<div class="form-group mb-2">
@@ -50,6 +31,15 @@
 				[(ngModel)]="flat.flatNumber"
 				class="form-control"
 			/>
+		</div>
+		<div class="form-group mb-2">
+			<label class="mb-1"
+				>Rented: ({{ flat.rented == "true" ? "Yes" : "No" }})</label
+			>
+			<select class="form-select" name="rented" [(ngModel)]="flat.rented">
+				<option value="false" selected>No</option>
+				<option value="true">Yes</option>
+			</select>
 		</div>
 		<input type="submit" class="form-control btn btn-primary" />
 	</form>

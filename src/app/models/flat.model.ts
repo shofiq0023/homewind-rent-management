@@ -3,4 +3,5 @@ export interface Flat {
 	buildingName: string;
 	buildingFloor: number;
 	flatNumber: string;
+	rented: string;
 }

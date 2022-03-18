@@ -11,6 +11,7 @@
 				<th scope="col">Flat number</th>
 				<th scope="col">Building name</th>
 				<th scope="col">Floor</th>
+				<th scope="col">Rented</th>
 				<th scope="col" class="text-center">Manage</th>
 			</tr>
 		</thead>
@@ -20,6 +21,7 @@
 				<td>{{ flat.flatNumber }}</td>
 				<td>{{ flat.buildingName }}</td>
 				<td>{{ flat.buildingFloor }}</td>
+				<td>{{ flat.rented == "true" ? "Yes" : "No" }}</td>
 				<td class="text-center">
 					<button
 						class="btn btn-primary btn-sm me-4"

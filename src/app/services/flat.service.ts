@@ -35,7 +35,9 @@ export class FlatService {
 		);
 
 		querySnapshot.forEach((doc) => {
-			newFlats.push(doc.data()['flatNumber']);
+			if (doc.data()['rented'] == 'false') {
+				newFlats.push(doc.data()['flatNumber']);
+			}
 		});
 
 		return newFlats;

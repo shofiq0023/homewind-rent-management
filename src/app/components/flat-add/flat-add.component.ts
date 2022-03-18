@@ -44,6 +44,7 @@ export class FlatAddComponent implements OnInit {
 			buildingName: this.buildingName,
 			buildingFloor: this.buildingFloor,
 			flatNumber: this.flatNumber,
+			rented: 'false',
 		};
 
 		this.flatService.addFlat(newFlat).then(() => {
