@@ -27,6 +27,9 @@ import { BillPayComponent } from './components/bill-pay/bill-pay.component';
 import { RenterModalComponent } from './modal/renter-modal/renter-modal.component';
 import { BuildingModalComponent } from './modal/building-modal/building-modal.component';
 import { FlatModalComponent } from './modal/flat-modal/flat-modal.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 @NgModule({
 	declarations: [
@@ -43,8 +46,10 @@ import { FlatModalComponent } from './modal/flat-modal/flat-modal.component';
 		BillHistoryComponent,
 		BillPayComponent,
 		RenterModalComponent,
-  BuildingModalComponent,
-  FlatModalComponent,
+		BuildingModalComponent,
+		FlatModalComponent,
+		LoginComponent,
+		SignupComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -54,6 +59,7 @@ import { FlatModalComponent } from './modal/flat-modal/flat-modal.component';
 		provideFirebaseApp(() => initializeApp(environment.firebase)),
 		provideFirestore(() => getFirestore()),
 		FormsModule,
+		provideAuth(() => getAuth()),
 	],
 	providers: [],
 	bootstrap: [AppComponent],

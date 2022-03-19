@@ -18,6 +18,9 @@ import { RenterService } from 'src/app/services/renter.service';
 	styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+	// @ts-ignore
+	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+
 	faUserList = faUserFriends;
 	faList = faList;
 	faHouse = faHouseUser;

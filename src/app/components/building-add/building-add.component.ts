@@ -13,6 +13,9 @@ import { BuildingService } from 'src/app/services/building.service';
 	styleUrls: ['./building-add.component.css'],
 })
 export class BuildingAddComponent implements OnInit {
+	// @ts-ignore
+	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+
 	faArrowLeft = faLongArrowAltLeft;
 	faUser = faUserFriends;
 	faHouse = faHouseUser;

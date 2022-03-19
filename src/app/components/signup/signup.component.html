@@ -1,0 +1,57 @@
+<div class="signup">
+	<div class="container">
+		<div class="signup-form">
+			<h3 class="text-center my-4">Signup</h3>
+			<p class="text-center text-danger">{{ message }}</p>
+			<form class="form" (ngSubmit)="onSubmit()">
+				<div class="form-group mb-2">
+					<label class="mb-1">E-mail:</label>
+					<input
+						type="email"
+						class="form-control"
+						name="email"
+						[(ngModel)]="email"
+						placeholder="eg.. yourname@gmail.com"
+					/>
+				</div>
+				<div class="form-group mb-2">
+					<label class="mb-1">Password:</label>
+					<input
+						type="password"
+						class="form-control"
+						name="password"
+						[(ngModel)]="password"
+						placeholder="Password..."
+					/>
+				</div>
+				<div class="form-group mb-3">
+					<label class="mb-1">Confirm password:</label>
+					<input
+						type="password"
+						class="form-control"
+						name="conPassword"
+						[(ngModel)]="conPassword"
+						placeholder="Enter your password again..."
+					/>
+					<p
+						*ngIf="password != conPassword"
+						class="text-sm text-danger"
+					>
+						Password do not match
+					</p>
+				</div>
+				<p class="mb-4">
+					Already have an account? <a routerLink="/login">Login</a>
+				</p>
+				<div class="form-group mb-2">
+					<input
+						type="submit"
+						value="Submit"
+						class="form-control btn btn-primary"
+						[disabled]="password != conPassword"
+					/>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

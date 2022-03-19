@@ -7,12 +7,16 @@ import { BuildingListComponent } from './components/building-list/building-list.
 import { FlatAddComponent } from './components/flat-add/flat-add.component';
 import { FlatListComponent } from './components/flat-list/flat-list.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 import { RecieptComponent } from './components/reciept/reciept.component';
 import { RenterAddComponent } from './components/renter-add/renter-add.component';
 import { RenterListComponent } from './components/renter-list/renter-list.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
-	{ path: '', redirectTo: 'home', pathMatch: 'full' },
+	{ path: '', redirectTo: 'login', pathMatch: 'full' },
+	{ path: 'login', component: LoginComponent },
+	{ path: 'signup', component: SignupComponent },
 	{ path: 'home', component: HomeComponent },
 	{ path: 'renter-list', component: RenterListComponent },
 	{ path: 'renter-add', component: RenterAddComponent },

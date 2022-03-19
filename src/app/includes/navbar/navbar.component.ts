@@ -16,6 +16,7 @@ import {
 	faMoneyBill,
 } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { Auth, signOut } from '@angular/fire/auth';
 
 @Component({
 	selector: 'app-navbar',
@@ -23,6 +24,9 @@ import { Router } from '@angular/router';
 	styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+	// @ts-ignore
+	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+
 	faHome = faHome;
 	faUser = faUser;
 	faUserPlus = faUserPlus;
@@ -43,11 +47,20 @@ export class NavbarComponent implements OnInit {
 	public isFlatCollapsed = true;
 	public isBillCollapsed = true;
 
-	constructor(public myRoute: Router) {}
+	constructor(public myRoute: Router, private auth: Auth) {}
 
 	ngOnInit(): void {}
 
 	title(): string {
 		return this.myRoute.url;
+	}
+
+	logout() {
+		if (confirm('Do you want to sign out?') == true) {
+			localStorage.setItem('loggedIn', JSON.stringify(false));
+			localStorage.setItem('userId', JSON.stringify(''));
+			this.myRoute.navigate(['login']);
+			signOut(this.auth);
+		}
 	}
 }

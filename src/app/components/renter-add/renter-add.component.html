@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div *ngIf="isLoggedIn" class="container-fluid">
 	<h2 class="mb-3">Add Renter</h2>
 	<a routerLink="/renter-list" class="btn btn-primary mb-3"
 		><fa-icon [icon]="faArrowLeft" class="me-2"></fa-icon> Go back to
@@ -122,7 +122,7 @@
 					class="form-select"
 					name="floor"
 					[(ngModel)]="floor"
-					(change)="getFlats(floor)"
+					(change)="getFlats(floor, building)"
 					required
 				>
 					<option *ngFor="let floor of floors" value="{{ floor }}">

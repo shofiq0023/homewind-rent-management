@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
 	faPlusCircle,
 	faPencilAlt,
@@ -14,6 +15,9 @@ import { BillService } from 'src/app/services/bill.service';
 	styleUrls: ['./bill-history.component.css'],
 })
 export class BillHistoryComponent implements OnInit {
+	// @ts-ignore
+	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+
 	faPlus = faPlusCircle;
 	faPencil = faPencilAlt;
 	faTrash = faTrash;
@@ -21,7 +25,7 @@ export class BillHistoryComponent implements OnInit {
 
 	bills: Bill[] = [];
 
-	constructor(private billService: BillService) {}
+	constructor(private billService: BillService, private router: Router) {}
 
 	ngOnInit(): void {
 		this.billService.getBills().subscribe((bill) => {

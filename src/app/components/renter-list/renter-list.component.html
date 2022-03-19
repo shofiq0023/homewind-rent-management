@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div *ngIf="isLoggedIn" class="container-fluid">
 	<h2 class="mb-3">Renter List</h2>
 	<a routerLink="/renter-add" class="btn btn-primary mb-3"
 		>Add Renter <fa-icon [icon]="faPlus" class="ms-2"></fa-icon>

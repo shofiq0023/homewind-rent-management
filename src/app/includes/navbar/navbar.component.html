@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+<nav *ngIf="isLoggedIn" class="navbar navbar-expand-lg navbar-dark sticky-top">
 	<div class="container-fluid">
 		<button
 			class="navbar-toggler bg-dark"
@@ -258,10 +258,10 @@
 						<div class="row align-items-center">
 							<div class="col-md-12 text-end">
 								<a
-									href="#"
-									class="text-red"
+									class="text-red signout-btn"
 									placement="left"
 									ngbTooltip="Sign out"
+									(click)="logout()"
 									><fa-icon
 										[icon]="faSignOut"
 										class="fa-2x"

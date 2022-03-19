@@ -18,6 +18,9 @@ interface Alert {
 	styleUrls: ['./renter-add.component.css'],
 })
 export class RenterAddComponent implements OnInit {
+	// @ts-ignore
+	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+
 	faArrowLeft = faLongArrowAltLeft;
 	faCity = faCity;
 	message!: string;
@@ -74,8 +77,11 @@ export class RenterAddComponent implements OnInit {
 		}
 	}
 
-	async getFlats(floor: number) {
-		let newFlats = await this.flatService.getFlatByFloor(floor);
+	async getFlats(floor: number, buildingName: string) {
+		let newFlats = await this.flatService.getFlatByFloor(
+			floor,
+			buildingName
+		);
 		this.flats = [];
 
 		newFlats.forEach((doc) => {

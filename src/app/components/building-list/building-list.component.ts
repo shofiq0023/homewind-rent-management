@@ -15,6 +15,9 @@ import { Building } from 'src/app/models/building.model';
 	styleUrls: ['./building-list.component.css'],
 })
 export class BuildingListComponent implements OnInit {
+	// @ts-ignore
+	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+
 	faPlus = faPlusCircle;
 	faPencil = faPencilAlt;
 	faTrash = faTrash;

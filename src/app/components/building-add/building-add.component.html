@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div *ngIf="isLoggedIn" class="container-fluid">
 	<h2 class="mb-3">Add building</h2>
 	<a routerLink="/building-list" class="btn btn-primary mb-3"
 		><fa-icon [icon]="faArrowLeft" class="me-2"></fa-icon> Go back to

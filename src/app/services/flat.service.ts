@@ -28,14 +28,17 @@ export class FlatService {
 		}) as Observable<Flat[]>;
 	}
 
-	async getFlatByFloor(floor: number) {
+	async getFlatByFloor(floor: number, buildingName: string) {
 		let newFlats: string[] = [];
 		const querySnapshot = await getDocs(
 			query(this.flatCollectionRef, where('buildingFloor', '==', floor))
 		);
 
 		querySnapshot.forEach((doc) => {
-			if (doc.data()['rented'] == 'false') {
+			if (
+				doc.data()['rented'] == 'false' &&
+				doc.data()['buildingName'] == buildingName
+			) {
 				newFlats.push(doc.data()['flatNumber']);
 			}
 		});

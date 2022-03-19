@@ -15,6 +15,9 @@ import { FlatService } from 'src/app/services/flat.service';
 	styleUrls: ['./flat-add.component.css'],
 })
 export class FlatAddComponent implements OnInit {
+	// @ts-ignore
+	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+
 	faArrowLeft = faLongArrowAltLeft;
 	faCity = faCity;
 	faUser = faUser;

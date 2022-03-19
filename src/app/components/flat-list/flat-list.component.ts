@@ -15,6 +15,9 @@ import { FlatService } from 'src/app/services/flat.service';
 	styleUrls: ['./flat-list.component.css'],
 })
 export class FlatListComponent implements OnInit {
+	// @ts-ignore
+	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+
 	faPlus = faPlusCircle;
 	faPencil = faPencilAlt;
 	faTrash = faTrash;

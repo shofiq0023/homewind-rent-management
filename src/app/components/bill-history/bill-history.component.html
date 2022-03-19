@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div *ngIf="isLoggedIn" class="container-fluid">
 	<h2 class="mb-3">Bill history</h2>
 	<a routerLink="/bill-pay" class="btn btn-primary mb-3"
 		>Pay bill <fa-icon [icon]="faPlus" class="ms-2"></fa-icon>

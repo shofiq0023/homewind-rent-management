@@ -1,0 +1,16 @@
+.signup {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	z-index: 10000;
+	background-color: white;
+}
+.form {
+	background-color: white;
+}
+.signup-form {
+	width: 400px;
+	margin: 0 auto;
+}

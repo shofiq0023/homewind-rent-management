@@ -16,12 +16,16 @@ import { RenterModalComponent } from 'src/app/modal/renter-modal/renter-modal.co
 	styleUrls: ['./renter-list.component.css'],
 })
 export class RenterListComponent implements OnInit {
+	// @ts-ignore
+	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+
 	faPlus = faPlusCircle;
 	faPencil = faPencilAlt;
 	faTrash = faTrash;
 	faInvoice = faFileInvoiceDollar;
 
 	renters: Renter[] = [];
+	message: string = '';
 
 	constructor(
 		private renterService: RenterService,

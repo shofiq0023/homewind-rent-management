@@ -11,6 +11,9 @@ import { RenterService } from 'src/app/services/renter.service';
 	styleUrls: ['./bill-pay.component.css'],
 })
 export class BillPayComponent implements OnInit {
+	// @ts-ignore
+	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+
 	faArrowLeft = faLongArrowAltLeft;
 	faUser = faUser;
 
