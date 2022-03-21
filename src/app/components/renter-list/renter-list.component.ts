@@ -9,6 +9,7 @@ import { Renter } from 'src/app/models/renter.model';
 import { RenterService } from 'src/app/services/renter.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RenterModalComponent } from 'src/app/modal/renter-modal/renter-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-renter-list',
@@ -25,14 +26,21 @@ export class RenterListComponent implements OnInit {
 	faInvoice = faFileInvoiceDollar;
 
 	renters: Renter[] = [];
+	allRenters: Renter[] = [];
 	message: string = '';
 
 	constructor(
 		private renterService: RenterService,
-		private modal: NgbModal
+		private modal: NgbModal,
+		private router: Router
 	) {}
 
 	ngOnInit(): void {
+		//@ts-ignore
+		if (JSON.parse(localStorage.getItem('loggedIn')) == false) {
+			this.router.navigateByUrl('/login');
+		}
+
 		this.renterService.getRenters().subscribe((renter) => {
 			this.renters = renter;
 		});

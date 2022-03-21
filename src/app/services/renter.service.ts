@@ -9,6 +9,8 @@ import {
 	deleteDoc,
 	docData,
 	setDoc,
+	query,
+	where,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -17,6 +19,8 @@ import { Observable } from 'rxjs';
 })
 export class RenterService {
 	renterCollectionRef = collection(this.firestore, 'renters');
+	// @ts-ignore
+	userId: string = JSON.parse(localStorage.getItem('userId'));
 	constructor(private firestore: Firestore) {}
 
 	getRenters(): Observable<Renter[]> {

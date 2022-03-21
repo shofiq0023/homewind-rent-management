@@ -8,6 +8,7 @@ import { BuildingService } from 'src/app/services/building.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BuildingModalComponent } from 'src/app/modal/building-modal/building-modal.component';
 import { Building } from 'src/app/models/building.model';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-building-list',
@@ -26,10 +27,16 @@ export class BuildingListComponent implements OnInit {
 
 	constructor(
 		private buildingService: BuildingService,
-		private modal: NgbModal
+		private modal: NgbModal,
+		private router: Router
 	) {}
 
 	ngOnInit(): void {
+		//@ts-ignore
+		if (JSON.parse(localStorage.getItem('loggedIn')) == false) {
+			this.router.navigateByUrl('/login');
+		}
+
 		this.buildingService.getBuildings().subscribe((building) => {
 			this.buildings = building;
 		});

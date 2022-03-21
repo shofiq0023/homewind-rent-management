@@ -24,9 +24,6 @@ import { Auth, signOut } from '@angular/fire/auth';
 	styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-	// @ts-ignore
-	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
-
 	faHome = faHome;
 	faUser = faUser;
 	faUserPlus = faUserPlus;
@@ -47,9 +44,18 @@ export class NavbarComponent implements OnInit {
 	public isFlatCollapsed = true;
 	public isBillCollapsed = true;
 
-	constructor(public myRoute: Router, private auth: Auth) {}
+	constructor(
+		public myRoute: Router,
+		private auth: Auth,
+		private router: Router
+	) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		//@ts-ignore
+		if (JSON.parse(localStorage.getItem('loggedIn')) == false) {
+			this.router.navigateByUrl('/login');
+		}
+	}
 
 	title(): string {
 		return this.myRoute.url;

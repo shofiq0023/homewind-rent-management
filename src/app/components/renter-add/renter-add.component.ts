@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getDoc } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faLongArrowAltLeft, faCity } from '@fortawesome/free-solid-svg-icons';
 import { Building } from 'src/app/models/building.model';
 import { BuildingService } from 'src/app/services/building.service';
@@ -41,10 +42,16 @@ export class RenterAddComponent implements OnInit {
 	constructor(
 		private renterService: RenterService,
 		private buildingService: BuildingService,
-		private flatService: FlatService
+		private flatService: FlatService,
+		private router: Router
 	) {}
 
 	ngOnInit(): void {
+		//@ts-ignore
+		if (JSON.parse(localStorage.getItem('loggedIn')) == false) {
+			this.router.navigateByUrl('/login');
+		}
+
 		this.buildingService.getBuildings().subscribe((res) => {
 			this.buildings = res;
 		});
@@ -52,6 +59,8 @@ export class RenterAddComponent implements OnInit {
 
 	onSubmit(form: NgForm) {
 		const newRenter = {
+			// @ts-ignore
+			userId: JSON.parse(localStorage.getItem('userId')),
 			fullName: this.fullName,
 			mobile: this.mobile,
 			email: this.email,
@@ -61,6 +70,7 @@ export class RenterAddComponent implements OnInit {
 			floor: this.floor,
 			flat: this.flat,
 		};
+
 		this.renterService.addRenter(newRenter).then(() => {
 			this.message = 'Add successful';
 			form.reset();
@@ -87,5 +97,7 @@ export class RenterAddComponent implements OnInit {
 		newFlats.forEach((doc) => {
 			this.flats.push(doc);
 		});
+
+		console.log(this.flats);
 	}
 }

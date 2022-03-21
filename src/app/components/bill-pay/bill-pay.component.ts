@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faLongArrowAltLeft, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Renter } from 'src/app/models/renter.model';
 import { BillService } from 'src/app/services/bill.service';
@@ -27,10 +28,16 @@ export class BillPayComponent implements OnInit {
 
 	constructor(
 		private billService: BillService,
-		private renterService: RenterService
+		private renterService: RenterService,
+		private router: Router
 	) {}
 
 	ngOnInit(): void {
+		//@ts-ignore
+		if (JSON.parse(localStorage.getItem('loggedIn')) == false) {
+			this.router.navigateByUrl('/login');
+		}
+
 		this.renterService.getRenters().subscribe((res) => {
 			this.renters = res;
 		});
@@ -38,6 +45,7 @@ export class BillPayComponent implements OnInit {
 
 	onSubmit(form: NgForm) {
 		const newBill = {
+			userId: localStorage.getItem('userId'),
 			renterName: this.renterName,
 			billType: this.billType,
 			amount: this.amount,

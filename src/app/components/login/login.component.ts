@@ -14,7 +14,12 @@ export class LoginComponent implements OnInit {
 
 	constructor(public router: Router, private auth: Auth) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		//@ts-ignore
+		if (JSON.parse(localStorage.getItem('loggedIn')) == true) {
+			this.router.navigateByUrl('/home');
+		}
+	}
 
 	async onSubmit() {
 		if (

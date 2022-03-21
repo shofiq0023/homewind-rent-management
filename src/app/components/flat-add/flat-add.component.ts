@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
 	faLongArrowAltLeft,
 	faCity,
@@ -33,10 +34,16 @@ export class FlatAddComponent implements OnInit {
 
 	constructor(
 		private flatService: FlatService,
-		private buildingService: BuildingService
+		private buildingService: BuildingService,
+		private router: Router
 	) {}
 
 	ngOnInit(): void {
+		//@ts-ignore
+		if (JSON.parse(localStorage.getItem('loggedIn')) == false) {
+			this.router.navigateByUrl('/login');
+		}
+
 		this.buildingService.getBuildings().subscribe((res) => {
 			this.buildings = res;
 		});
@@ -44,6 +51,7 @@ export class FlatAddComponent implements OnInit {
 
 	onSubmit(form: NgForm) {
 		const newFlat = {
+			userId: localStorage.getItem('userId'),
 			buildingName: this.buildingName,
 			buildingFloor: this.buildingFloor,
 			flatNumber: this.flatNumber,

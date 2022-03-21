@@ -28,6 +28,11 @@ export class BillHistoryComponent implements OnInit {
 	constructor(private billService: BillService, private router: Router) {}
 
 	ngOnInit(): void {
+		//@ts-ignore
+		if (JSON.parse(localStorage.getItem('loggedIn')) == false) {
+			this.router.navigateByUrl('/login');
+		}
+
 		this.billService.getBills().subscribe((bill) => {
 			this.bills = bill;
 		});

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
 	faPlusCircle,
 	faPencilAlt,
@@ -24,9 +25,18 @@ export class FlatListComponent implements OnInit {
 
 	flats: Flat[] = [];
 
-	constructor(private flatService: FlatService, private modal: NgbModal) {}
+	constructor(
+		private flatService: FlatService,
+		private modal: NgbModal,
+		private router: Router
+	) {}
 
 	ngOnInit(): void {
+		//@ts-ignore
+		if (JSON.parse(localStorage.getItem('loggedIn')) == false) {
+			this.router.navigateByUrl('/login');
+		}
+
 		this.flatService.getFlats().subscribe((flat) => {
 			this.flats = flat;
 		});

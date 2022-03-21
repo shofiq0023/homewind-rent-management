@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
 	faUserFriends,
 	faList,
@@ -33,10 +34,16 @@ export class HomeComponent implements OnInit {
 	constructor(
 		private renterService: RenterService,
 		private buildingService: BuildingService,
-		private flatService: FlatService
+		private flatService: FlatService,
+		private router: Router
 	) {}
 
 	ngOnInit(): void {
+		//@ts-ignore
+		if (JSON.parse(localStorage.getItem('loggedIn')) == false) {
+			this.router.navigateByUrl('/login');
+		}
+
 		this.renterService.getRenters().subscribe((renter) => {
 			this.renters = renter;
 		});
