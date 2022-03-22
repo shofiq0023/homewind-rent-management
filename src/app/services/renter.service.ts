@@ -9,8 +9,6 @@ import {
 	deleteDoc,
 	docData,
 	setDoc,
-	query,
-	where,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 

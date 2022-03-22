@@ -51,7 +51,8 @@ export class FlatAddComponent implements OnInit {
 
 	onSubmit(form: NgForm) {
 		const newFlat = {
-			userId: localStorage.getItem('userId'),
+			// @ts-ignore
+			userId: JSON.parse(localStorage.getItem('userId')),
 			buildingName: this.buildingName,
 			buildingFloor: this.buildingFloor,
 			flatNumber: this.flatNumber,

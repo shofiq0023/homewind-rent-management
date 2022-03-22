@@ -45,7 +45,8 @@ export class BillPayComponent implements OnInit {
 
 	onSubmit(form: NgForm) {
 		const newBill = {
-			userId: localStorage.getItem('userId'),
+			// @ts-ignore
+			userId: JSON.parse(localStorage.getItem('userId')),
 			renterName: this.renterName,
 			billType: this.billType,
 			amount: this.amount,

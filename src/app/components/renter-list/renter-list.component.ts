@@ -19,6 +19,8 @@ import { Router } from '@angular/router';
 export class RenterListComponent implements OnInit {
 	// @ts-ignore
 	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+	// @ts-ignore
+	userId: string = JSON.parse(localStorage.getItem('userId'));
 
 	faPlus = faPlusCircle;
 	faPencil = faPencilAlt;
@@ -26,7 +28,6 @@ export class RenterListComponent implements OnInit {
 	faInvoice = faFileInvoiceDollar;
 
 	renters: Renter[] = [];
-	allRenters: Renter[] = [];
 	message: string = '';
 
 	constructor(
@@ -42,7 +43,13 @@ export class RenterListComponent implements OnInit {
 		}
 
 		this.renterService.getRenters().subscribe((renter) => {
-			this.renters = renter;
+			var i = 0;
+			renter.forEach((res) => {
+				if (res.userId == this.userId) {
+					this.renters.push(renter[i]);
+				}
+				i++;
+			});
 		});
 	}
 

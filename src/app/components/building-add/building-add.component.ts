@@ -44,7 +44,8 @@ export class BuildingAddComponent implements OnInit {
 		}
 
 		const newBuilding = {
-			userId: localStorage.getItem('userId'),
+			// @ts-ignore
+			userId: JSON.parse(localStorage.getItem('userId')),
 			name: this.name,
 			number: this.number,
 			floor: this.floor,

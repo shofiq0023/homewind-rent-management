@@ -18,6 +18,8 @@ import { FlatService } from 'src/app/services/flat.service';
 export class FlatListComponent implements OnInit {
 	// @ts-ignore
 	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+	// @ts-ignore
+	userId: string = JSON.parse(localStorage.getItem('userId'));
 
 	faPlus = faPlusCircle;
 	faPencil = faPencilAlt;
@@ -38,7 +40,13 @@ export class FlatListComponent implements OnInit {
 		}
 
 		this.flatService.getFlats().subscribe((flat) => {
-			this.flats = flat;
+			var i = 0;
+			flat.forEach((res) => {
+				if (res.userId == this.userId) {
+					this.flats.push(flat[i]);
+				}
+				i++;
+			});
 		});
 	}
 

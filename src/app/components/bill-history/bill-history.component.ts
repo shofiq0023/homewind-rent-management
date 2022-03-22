@@ -17,6 +17,8 @@ import { BillService } from 'src/app/services/bill.service';
 export class BillHistoryComponent implements OnInit {
 	// @ts-ignore
 	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+	// @ts-ignore
+	userId: string = JSON.parse(localStorage.getItem('userId'));
 
 	faPlus = faPlusCircle;
 	faPencil = faPencilAlt;
@@ -34,7 +36,13 @@ export class BillHistoryComponent implements OnInit {
 		}
 
 		this.billService.getBills().subscribe((bill) => {
-			this.bills = bill;
+			var i = 0;
+			bill.forEach((res) => {
+				if (res.userId == this.userId) {
+					this.bills.push(bill[i]);
+				}
+				i++;
+			});
 		});
 	}
 

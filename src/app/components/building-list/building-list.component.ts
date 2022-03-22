@@ -18,6 +18,8 @@ import { Router } from '@angular/router';
 export class BuildingListComponent implements OnInit {
 	// @ts-ignore
 	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+	// @ts-ignore
+	userId: string = JSON.parse(localStorage.getItem('userId'));
 
 	faPlus = faPlusCircle;
 	faPencil = faPencilAlt;
@@ -38,7 +40,13 @@ export class BuildingListComponent implements OnInit {
 		}
 
 		this.buildingService.getBuildings().subscribe((building) => {
-			this.buildings = building;
+			var i = 0;
+			building.forEach((res) => {
+				if (res.userId == this.userId) {
+					this.buildings.push(building[i]);
+				}
+				i++;
+			});
 		});
 	}
 

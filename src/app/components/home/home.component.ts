@@ -21,6 +21,8 @@ import { RenterService } from 'src/app/services/renter.service';
 export class HomeComponent implements OnInit {
 	// @ts-ignore
 	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+	// @ts-ignore
+	userId: string = JSON.parse(localStorage.getItem('userId'));
 
 	faUserList = faUserFriends;
 	faList = faList;
@@ -45,13 +47,31 @@ export class HomeComponent implements OnInit {
 		}
 
 		this.renterService.getRenters().subscribe((renter) => {
-			this.renters = renter;
+			var i = 0;
+			renter.forEach((res) => {
+				if (res.userId == this.userId) {
+					this.renters.push(renter[i]);
+				}
+				i++;
+			});
 		});
 		this.buildingService.getBuildings().subscribe((building) => {
-			this.buildings = building;
+			var i = 0;
+			building.forEach((res) => {
+				if (res.userId == this.userId) {
+					this.buildings.push(building[i]);
+				}
+				i++;
+			});
 		});
 		this.flatService.getFlats().subscribe((flat) => {
-			this.flats = flat;
+			var i = 0;
+			flat.forEach((res) => {
+				if (res.userId == this.userId) {
+					this.flats.push(flat[i]);
+				}
+				i++;
+			});
 		});
 	}
 }
