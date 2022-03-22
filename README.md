@@ -2,6 +2,8 @@
 
 A project where you can manage your buildings, floors, flats and renter information.
 
+[Visit the website](https://homewind.netlify.app/login) *(Not reccomended for mobile phones)*
+
 ## Technology used
 
 - JavaScript
@@ -28,12 +30,14 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Documentation
 
---> Navigating to `http://localhost:4200/` will redirect you to the **Login** page where you sign in with your email and password.
+--> Navigating to `http://localhost:4200/` will redirect you to the **Login** page where you sign in with your email and password *(Logged in users are remembered by default in every browser)*.
 
---> You can go to **Signup** page to register with an email and password.
+--> You can go to **Sign-up** page to register with an email and password.
 
 --> After logging in you can see the total number of **Building**, **Flat** and **Renter** you have added.<br>
 You can view the full list too.
+
+--> You can **Sign-out** using the Logout button located at the right side of the top bar.
 
 ### Sidebar options
 
