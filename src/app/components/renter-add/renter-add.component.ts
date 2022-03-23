@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { getDoc } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faLongArrowAltLeft, faCity } from '@fortawesome/free-solid-svg-icons';
@@ -21,6 +20,8 @@ interface Alert {
 export class RenterAddComponent implements OnInit {
 	// @ts-ignore
 	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+	// @ts-ignore
+	userId: string = JSON.parse(localStorage.getItem('userId'));
 
 	faArrowLeft = faLongArrowAltLeft;
 	faCity = faCity;
@@ -52,8 +53,17 @@ export class RenterAddComponent implements OnInit {
 			this.router.navigateByUrl('/login');
 		}
 
-		this.buildingService.getBuildings().subscribe((res) => {
-			this.buildings = res;
+		this.buildingService.getBuildings().subscribe((building) => {
+			var newBuilding: Building[] = [];
+			var i = 0;
+			building.forEach((res) => {
+				if (res.userId == this.userId) {
+					newBuilding.push(building[i]);
+				}
+				i++;
+			});
+
+			this.buildings = newBuilding;
 		});
 	}
 
@@ -73,18 +83,17 @@ export class RenterAddComponent implements OnInit {
 
 		this.renterService.addRenter(newRenter).then(() => {
 			this.message = 'Add successful';
+			setTimeout(() => (this.message = ''), 3000);
 			form.reset();
 		});
 	}
 
-	async setFloor(buildingName: string) {
-		let newFloor = await this.buildingService.getFloor(buildingName);
-		this.floors = [];
-
-		// @ts-ignore
-		for (let i = 1; i <= newFloor; i++) {
-			this.floors.push(i);
-		}
+	setFloor(buildingName: string) {
+		this.buildings.forEach((data) => {
+			if (data.name == buildingName) {
+				this.floors = data.floor;
+			}
+		});
 	}
 
 	async getFlats(floor: number, buildingName: string) {

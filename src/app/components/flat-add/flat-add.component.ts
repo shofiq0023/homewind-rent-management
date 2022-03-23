@@ -18,6 +18,8 @@ import { FlatService } from 'src/app/services/flat.service';
 export class FlatAddComponent implements OnInit {
 	// @ts-ignore
 	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+	// @ts-ignore
+	userId: string = JSON.parse(localStorage.getItem('userId'));
 
 	faArrowLeft = faLongArrowAltLeft;
 	faCity = faCity;
@@ -45,7 +47,16 @@ export class FlatAddComponent implements OnInit {
 		}
 
 		this.buildingService.getBuildings().subscribe((res) => {
-			this.buildings = res;
+			var newBuilding: Building[] = [];
+			var i = 0;
+			res.forEach((data) => {
+				if (data.userId == this.userId) {
+					newBuilding.push(res[i]);
+				}
+				i++;
+			});
+
+			this.buildings = newBuilding;
 		});
 	}
 
@@ -62,6 +73,7 @@ export class FlatAddComponent implements OnInit {
 		this.flatService.addFlat(newFlat).then(() => {
 			form.reset();
 			this.message = 'New flat added';
+			setTimeout(() => (this.message = ''), 3000);
 		});
 	}
 

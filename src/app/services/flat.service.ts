@@ -11,7 +11,6 @@ import {
 	getDocs,
 	where,
 	query,
-	updateDoc,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 

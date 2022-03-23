@@ -47,31 +47,40 @@ export class HomeComponent implements OnInit {
 		}
 
 		this.renterService.getRenters().subscribe((renter) => {
+			var newRenters: Renter[] = [];
 			var i = 0;
 			renter.forEach((res) => {
 				if (res.userId == this.userId) {
-					this.renters.push(renter[i]);
+					newRenters.push(renter[i]);
 				}
 				i++;
 			});
+
+			this.renters = newRenters;
 		});
 		this.buildingService.getBuildings().subscribe((building) => {
+			var newBuliding: Building[] = [];
 			var i = 0;
 			building.forEach((res) => {
 				if (res.userId == this.userId) {
-					this.buildings.push(building[i]);
+					newBuliding.push(building[i]);
 				}
 				i++;
 			});
+
+			this.buildings = newBuliding;
 		});
 		this.flatService.getFlats().subscribe((flat) => {
+			var newFlats: Flat[] = [];
 			var i = 0;
 			flat.forEach((res) => {
 				if (res.userId == this.userId) {
-					this.flats.push(flat[i]);
+					newFlats.push(flat[i]);
 				}
 				i++;
 			});
+
+			this.flats = newFlats;
 		});
 	}
 }

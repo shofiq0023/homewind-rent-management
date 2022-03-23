@@ -14,6 +14,8 @@ import { RenterService } from 'src/app/services/renter.service';
 export class BillPayComponent implements OnInit {
 	// @ts-ignore
 	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
+	// @ts-ignore
+	userId: string = JSON.parse(localStorage.getItem('userId'));
 
 	faArrowLeft = faLongArrowAltLeft;
 	faUser = faUser;
@@ -39,7 +41,16 @@ export class BillPayComponent implements OnInit {
 		}
 
 		this.renterService.getRenters().subscribe((res) => {
-			this.renters = res;
+			var newRenters: Renter[] = [];
+			var i = 0;
+			res.forEach((data) => {
+				if (data.userId == this.userId) {
+					newRenters.push(res[i]);
+				}
+				i++;
+			});
+
+			this.renters = newRenters;
 		});
 	}
 
@@ -54,6 +65,7 @@ export class BillPayComponent implements OnInit {
 		this.billService.payBill(newBill).then(() => {
 			form.reset();
 			this.message = 'Bill pay info added';
+			setTimeout(() => (this.message = ''), 3000);
 		});
 	}
 }

@@ -3,5 +3,5 @@ export interface Building {
 	userId: string | null;
 	name: string;
 	number: string;
-	floor: number;
+	floor: number[];
 }

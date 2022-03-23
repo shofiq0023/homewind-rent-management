@@ -40,13 +40,16 @@ export class FlatListComponent implements OnInit {
 		}
 
 		this.flatService.getFlats().subscribe((flat) => {
+			var newFlat: Flat[] = [];
 			var i = 0;
 			flat.forEach((res) => {
 				if (res.userId == this.userId) {
-					this.flats.push(flat[i]);
+					newFlat.push(flat[i]);
 				}
 				i++;
 			});
+
+			this.flats = newFlat;
 		});
 	}
 

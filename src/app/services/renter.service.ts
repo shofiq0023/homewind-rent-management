@@ -21,7 +21,7 @@ export class RenterService {
 	userId: string = JSON.parse(localStorage.getItem('userId'));
 	constructor(private firestore: Firestore) {}
 
-	getRenters(): Observable<Renter[]> {
+	getRenters() {
 		return collectionData(this.renterCollectionRef, {
 			idField: 'id',
 		}) as Observable<Renter[]>;

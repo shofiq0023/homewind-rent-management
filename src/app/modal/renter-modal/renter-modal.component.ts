@@ -5,7 +5,6 @@ import { RenterService } from 'src/app/services/renter.service';
 import { FlatService } from 'src/app/services/flat.service';
 import { BuildingService } from 'src/app/services/building.service';
 import { Building } from 'src/app/models/building.model';
-import { Flat } from 'src/app/models/flat.model';
 
 @Component({
 	selector: 'app-renter-modal',
@@ -13,6 +12,9 @@ import { Flat } from 'src/app/models/flat.model';
 	styleUrls: ['./renter-modal.component.css'],
 })
 export class RenterModalComponent implements OnInit {
+	// @ts-ignore
+	userId: string = JSON.parse(localStorage.getItem('userId'));
+
 	@Input() renter!: Renter;
 
 	buildings: Building[] = [];
@@ -28,8 +30,24 @@ export class RenterModalComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.buildingService.getBuildings().subscribe((res) => {
-			this.buildings = res;
-			console.log(this.buildings);
+			var newBuilding: Building[] = [];
+			var i = 0;
+			res.forEach((data) => {
+				if (data.userId == this.userId) {
+					newBuilding.push(res[i]);
+				}
+				i++;
+			});
+			this.buildings = newBuilding;
+		});
+		this.setNewFloor(this.renter.building);
+	}
+
+	async setNewFloor(buildingName: string) {
+		var newFloor = await this.buildingService.getFloor(buildingName);
+		// @ts-ignore
+		await newFloor.forEach((data) => {
+			this.floors.push(data);
 		});
 	}
 
@@ -40,13 +58,14 @@ export class RenterModalComponent implements OnInit {
 	}
 
 	async setFloor(buildingName: string) {
-		let newFloor = await this.buildingService.getFloor(buildingName);
+		console.log('change works');
 		this.floors = [];
+		let newFloor = await this.buildingService.getFloor(buildingName);
 
 		// @ts-ignore
-		for (let i = 1; i <= newFloor; i++) {
-			this.floors.push(i);
-		}
+		newFloor.forEach((data) => {
+			this.floors.push(data);
+		});
 	}
 
 	async getFlats(floor: number, buildingName: string) {

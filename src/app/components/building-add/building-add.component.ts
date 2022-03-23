@@ -16,7 +16,8 @@ import { BuildingService } from 'src/app/services/building.service';
 export class BuildingAddComponent implements OnInit {
 	// @ts-ignore
 	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
-	userId!: string;
+	// @ts-ignore
+	userId: string = JSON.parse(localStorage.getItem('userId'));
 
 	faArrowLeft = faLongArrowAltLeft;
 	faUser = faUserFriends;
@@ -33,9 +34,7 @@ export class BuildingAddComponent implements OnInit {
 		private router: Router
 	) {}
 
-	ngOnInit(): void {
-		console.log('userid in storage : ');
-	}
+	ngOnInit(): void {}
 
 	onSubmit(form: NgForm) {
 		//@ts-ignore
@@ -43,17 +42,22 @@ export class BuildingAddComponent implements OnInit {
 			this.router.navigateByUrl('/login');
 		}
 
+		var newFloor: number[] = [];
+		for (let i = 1; i <= this.floor; i++) {
+			newFloor.push(i);
+		}
+
 		const newBuilding = {
-			// @ts-ignore
-			userId: JSON.parse(localStorage.getItem('userId')),
+			userId: this.userId,
 			name: this.name,
 			number: this.number,
-			floor: this.floor,
+			floor: newFloor,
 		};
 
 		this.buildingService.addBuilding(newBuilding).then(() => {
 			this.message = 'New building added';
 			form.reset();
+			setTimeout(() => (this.message = ''), 3000);
 		});
 	}
 }

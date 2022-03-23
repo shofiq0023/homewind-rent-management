@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵsetComponentScope } from '@angular/core';
 import {
 	faPlusCircle,
 	faPencilAlt,
@@ -43,13 +43,16 @@ export class RenterListComponent implements OnInit {
 		}
 
 		this.renterService.getRenters().subscribe((renter) => {
+			var newRenters: Renter[] = [];
 			var i = 0;
 			renter.forEach((res) => {
 				if (res.userId == this.userId) {
-					this.renters.push(renter[i]);
+					newRenters.push(renter[i]);
 				}
 				i++;
 			});
+
+			this.renters = newRenters;
 		});
 	}
 
@@ -64,6 +67,7 @@ export class RenterListComponent implements OnInit {
 			size: 'lg',
 			centered: true,
 		});
+
 		modalRef.componentInstance.renter = renter;
 	}
 }

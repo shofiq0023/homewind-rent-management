@@ -36,13 +36,16 @@ export class BillHistoryComponent implements OnInit {
 		}
 
 		this.billService.getBills().subscribe((bill) => {
+			var newBill: Bill[] = [];
 			var i = 0;
 			bill.forEach((res) => {
 				if (res.userId == this.userId) {
-					this.bills.push(bill[i]);
+					newBill.push(bill[i]);
 				}
 				i++;
 			});
+
+			this.bills = newBill;
 		});
 	}
 

@@ -40,13 +40,15 @@ export class BuildingListComponent implements OnInit {
 		}
 
 		this.buildingService.getBuildings().subscribe((building) => {
+			var newBuilding: Building[] = [];
 			var i = 0;
 			building.forEach((res) => {
 				if (res.userId == this.userId) {
-					this.buildings.push(building[i]);
+					newBuilding.push(building[i]);
 				}
 				i++;
 			});
+			this.buildings = newBuilding;
 		});
 	}
 
