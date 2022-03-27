@@ -41,6 +41,9 @@ You can view the full list too.
 
 ### Sidebar options
 
+- Dashboard
+	- 3 simple cards to show the count of total renter, building and flat.
+
 - Renter
 
     - Renter List -> View the full list of all the renters.<br>
@@ -62,16 +65,14 @@ You can view the full list too.
 
     - Add Flat -> You can **add** a new Flat to an existing **Building according to floor**.
 
-- Bill
+- Rent Pay
 
-    - Bill History -> View full list of all the paid bill.<br>
-        You can only **Delete** the bill history.
+	- Add rent payment information about a renter.
 
-    - Pay Bill -> **Add bill payment information of a renter**.
-	*(Pay Bill doesn't actually pays bill)*<br>
-	There is 4 bill option: 
-		- Utility Bill
-		- Electric Bill
-		- Gas Bill
-		- Water Bill
+	- Add rent amount, month of rent payment, rent type, electric bill, gas bill and water bill.
+		- **Rent Type**:
+			- Active month: Rent payment of the **current/active** month
+			- Due rent: Rent payment of a **due month**.
+			- Advance: **Advance payment** for when adding a new renter.
+    
 	
