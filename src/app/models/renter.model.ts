@@ -9,4 +9,5 @@ export interface Renter {
 	building: string;
 	floor: number;
 	flat: string;
+	advance: number;
 }

@@ -186,67 +186,30 @@
 								</div>
 							</li>
 
-							<!-- bill -->
+							<!-- report -->
 							<li
 								class="navbar-item"
 								routerLinkActive="link-active"
 							>
 								<a
+									routerLink="/rent-pay"
 									class="nav-link nav-link-main text-white p-3 mb-2 sidebar-link"
-									(click)="billCollapse.toggle()"
-									[attr.aria-expanded]="!isBillCollapsed"
 								>
-									<fa-icon [icon]="faInvoice"></fa-icon>
-									Bill
-									<fa-icon
-										[icon]="faAngleDown"
-										class="ms-1"
-									></fa-icon>
+									<fa-icon [icon]="faMoneyWave"></fa-icon>
+									Rent Pay
 								</a>
-								<div
-									#billCollapse="ngbCollapse"
-									[(ngbCollapse)]="isBillCollapsed"
-								>
-									<ul>
-										<!-- bill history -->
-										<li class="navbar-item ms-4">
-											<a
-												routerLink="/bill-history"
-												class="nav-link"
-											>
-												<fa-icon
-													[icon]="faMoneyCheck"
-												></fa-icon>
-												Bill history
-											</a>
-										</li>
-										<!-- add building -->
-										<li class="navbar-item ms-4">
-											<a
-												routerLink="/bill-pay"
-												class="nav-link"
-											>
-												<fa-icon
-													[icon]="faMoney"
-												></fa-icon>
-												Pay bill
-											</a>
-										</li>
-									</ul>
-								</div>
 							</li>
-
-							<!-- reciept -->
+							<!-- report -->
 							<li
 								class="navbar-item"
 								routerLinkActive="link-active"
 							>
 								<a
-									routerLink="/reciept"
+									routerLink="/report"
 									class="nav-link nav-link-main text-white p-3 mb-2 sidebar-link"
 								>
 									<fa-icon [icon]="faReceipt"></fa-icon>
-									Reciept
+									Report
 								</a>
 							</li>
 						</ul>

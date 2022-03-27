@@ -19,17 +19,16 @@ import { RenterListComponent } from './components/renter-list/renter-list.compon
 import { RenterAddComponent } from './components/renter-add/renter-add.component';
 import { BuildingListComponent } from './components/building-list/building-list.component';
 import { BuildingAddComponent } from './components/building-add/building-add.component';
-import { RecieptComponent } from './components/reciept/reciept.component';
 import { FlatListComponent } from './components/flat-list/flat-list.component';
 import { FlatAddComponent } from './components/flat-add/flat-add.component';
-import { BillHistoryComponent } from './components/bill-history/bill-history.component';
-import { BillPayComponent } from './components/bill-pay/bill-pay.component';
 import { RenterModalComponent } from './modal/renter-modal/renter-modal.component';
 import { BuildingModalComponent } from './modal/building-modal/building-modal.component';
 import { FlatModalComponent } from './modal/flat-modal/flat-modal.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { RentPayComponent } from './components/rent-pay/rent-pay.component';
+import { ReportComponent } from './components/report/report.component';
 
 @NgModule({
 	declarations: [
@@ -40,16 +39,15 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 		RenterAddComponent,
 		BuildingListComponent,
 		BuildingAddComponent,
-		RecieptComponent,
 		FlatListComponent,
 		FlatAddComponent,
-		BillHistoryComponent,
-		BillPayComponent,
 		RenterModalComponent,
 		BuildingModalComponent,
 		FlatModalComponent,
 		LoginComponent,
 		SignupComponent,
+		RentPayComponent,
+		ReportComponent,
 	],
 	imports: [
 		BrowserModule,

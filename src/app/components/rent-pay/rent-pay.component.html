@@ -1,0 +1,157 @@
+<div *ngIf="isLoggedIn" class="container-fluid">
+	<h2 class="mb-3">Add Rent payment info:</h2>
+	<a routerLink="/report" class="btn btn-primary mb-3"
+		>See reports<fa-icon [icon]="faArrowRight" class="ms-2"></fa-icon
+	></a>
+
+	<form
+		class="form p-3 rounded"
+		#rentForm="ngForm"
+		(ngSubmit)="onSubmit(rentForm)"
+	>
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Renter name:</h5>
+			</div>
+			<div class="col-8">
+				<select
+					class="form-select"
+					name="renterId"
+					[(ngModel)]="renterId"
+					(change)="setRenterName(renterId)"
+				>
+					<option
+						*ngFor="let renter of renters"
+						value="{{ renter.id }}"
+					>
+						{{ renter.fullName }}
+					</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Rent amount:</h5>
+			</div>
+			<div class="col-8">
+				<div class="input-group">
+					<span class="input-group-text"><b>৳</b></span>
+					<input
+						type="number"
+						name="rentAmount"
+						[(ngModel)]="rentAmount"
+						class="form-control"
+						placeholder="eg.. 10,000 or 12,000..."
+						required
+					/>
+				</div>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Month:</h5>
+			</div>
+			<div class="col-8">
+				<select
+					class="form-select"
+					name="renterName"
+					[(ngModel)]="rentMonth"
+				>
+					<option *ngFor="let month of months" value="{{ month }}">
+						{{ month }}
+					</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Rent type:</h5>
+			</div>
+			<div class="col-8">
+				<select
+					class="form-select"
+					name="rentType"
+					[(ngModel)]="rentType"
+				>
+					<option value="Active month">Active month</option>
+					<option value="Due rent">Due rent</option>
+					<option value="Advance">Advance</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Electric Bill:</h5>
+			</div>
+			<div class="col-8">
+				<div class="input-group">
+					<span class="input-group-text" id="basic-addon2">
+						<fa-icon [icon]="faElectric"></fa-icon>
+					</span>
+					<input
+						type="number"
+						name="electricBill"
+						[(ngModel)]="electricBill"
+						class="form-control"
+						placeholder="eg.. 1,000/3,000"
+					/>
+				</div>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Gas Bill:</h5>
+			</div>
+			<div class="col-8">
+				<div class="input-group">
+					<span class="input-group-text" id="basic-addon2">
+						<fa-icon [icon]="faGas"></fa-icon>
+					</span>
+					<input
+						type="number"
+						name="gasBill"
+						[(ngModel)]="gasBill"
+						class="form-control"
+						placeholder="eg.. 500/1,000"
+					/>
+				</div>
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Water Bill:</h5>
+			</div>
+			<div class="col-8">
+				<div class="input-group">
+					<span class="input-group-text" id="basic-addon2">
+						<fa-icon [icon]="faWater"></fa-icon>
+					</span>
+					<input
+						type="number"
+						name="waterBill"
+						[(ngModel)]="waterBill"
+						class="form-control"
+						placeholder="eg.. 800/2,000"
+					/>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-4 mb-3">
+			<div class="col-4">
+				<input
+					type="submit"
+					value="Submit"
+					class="form-control btn btn-primary"
+				/>
+			</div>
+		</div>
+		<p class="text-success">{{ message }}</p>
+	</form>
+</div>

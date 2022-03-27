@@ -35,6 +35,7 @@ export class RenterAddComponent implements OnInit {
 	building!: string;
 	floor!: number;
 	flat!: string;
+	advance!: number;
 
 	buildings: Building[] = [];
 	floors: number[] = [];
@@ -79,6 +80,7 @@ export class RenterAddComponent implements OnInit {
 			building: this.building,
 			floor: this.floor,
 			flat: this.flat,
+			advance: this.advance,
 		};
 
 		this.renterService.addRenter(newRenter).then(() => {

@@ -14,6 +14,7 @@ import {
 	faHouseDamage,
 	faMoneyCheck,
 	faMoneyBill,
+	faMoneyBillWave,
 } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { Auth, signOut } from '@angular/fire/auth';
@@ -38,6 +39,7 @@ export class NavbarComponent implements OnInit {
 	faHouse = faHouseDamage;
 	faMoneyCheck = faMoneyCheck;
 	faMoney = faMoneyBill;
+	faMoneyWave = faMoneyBillWave;
 
 	public isRenterCollapsed = true;
 	public isBuildingCollapsed = true;

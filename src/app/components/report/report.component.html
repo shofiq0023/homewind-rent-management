@@ -1,0 +1,72 @@
+<div *ngIf="isLoggedIn" class="container-fluid">
+	<h2 class="mb-3">Add Renter</h2>
+	<a routerLink="/rent-pay" class="btn btn-primary mb-3"
+		><fa-icon [icon]="faArrowLeft" class="me-2"></fa-icon> Go to rent
+		payment</a
+	>
+	<form
+		class="form mb-3"
+		#reportForm="ngForm"
+		(ngSubmit)="onSubmit(reportForm)"
+	>
+		<div class="form-group">
+			<select
+				name="renterName"
+				[(ngModel)]="renterName"
+				class="form-select"
+				(change)="getReport(renterName)"
+			>
+				<option
+					*ngFor="let renter of renters"
+					value="{{ renter.fullName }}"
+				>
+					{{ renter.fullName }}
+				</option>
+			</select>
+		</div>
+	</form>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Month</th>
+				<th scope="col">Name</th>
+				<th scope="col">Rent</th>
+				<th scope="col">Gas</th>
+				<th scope="col">Water</th>
+				<th scope="col">Total amount</th>
+				<th scope="col">Rent Type</th>
+				<th scope="col">Payment Date</th>
+				<th scope="col" class="text-center">Manage</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let rent of rents">
+				<td>{{ rent.rentMonth }}</td>
+				<td>{{ rent.renterName }}</td>
+				<td>{{ rent.rentAmount.toLocaleString("en-IN") }}৳</td>
+				<td>{{ rent.gasBill.toLocaleString("en-IN") }}৳</td>
+				<td>{{ rent.waterBill.toLocaleString("en-IN") }}৳</td>
+				<td>
+					{{
+						(
+							rent.rentAmount +
+							rent.gasBill +
+							rent.waterBill
+						).toLocaleString("en-IN")
+					}}৳
+				</td>
+				<td>{{ rent.rentType }}</td>
+				<td>{{ rent.paymentDate.slice(4, 15).replace(" ", ", ") }}</td>
+				<td class="text-center">
+					<button
+						class="btn btn-danger btn-sm"
+						(click)="deleteReport(rent)"
+					>
+						<fa-icon [icon]="faTrash"></fa-icon>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
