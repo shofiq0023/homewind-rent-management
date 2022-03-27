@@ -2,7 +2,7 @@
 
 A project where you can manage your buildings, floors, flats and renter information.
 
-[Visit the website](https://homewind.netlify.app/login) *(Not reccomended for mobile phones)*
+### [Visit the website](https://homewind.netlify.app/login) *(Not reccomended for mobile phones)*
 
 ## Technology used
 
