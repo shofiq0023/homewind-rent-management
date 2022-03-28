@@ -29,6 +29,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { RentPayComponent } from './components/rent-pay/rent-pay.component';
 import { ReportComponent } from './components/report/report.component';
+import { RenterDetailModalComponent } from './modal/renter-detail-modal/renter-detail-modal.component';
 
 @NgModule({
 	declarations: [
@@ -48,6 +49,7 @@ import { ReportComponent } from './components/report/report.component';
 		SignupComponent,
 		RentPayComponent,
 		ReportComponent,
+  RenterDetailModalComponent,
 	],
 	imports: [
 		BrowserModule,

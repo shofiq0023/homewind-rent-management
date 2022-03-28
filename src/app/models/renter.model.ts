@@ -5,9 +5,9 @@ export interface Renter {
 	mobile: string;
 	email: string;
 	address: string;
+	nid: string;
 	deal: string;
 	building: string;
 	floor: number;
 	flat: string;
-	advance: number;
 }

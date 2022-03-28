@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import {
 	faArrowLeft,
 	faArrowRight,
+	faPrint,
 	faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { filter } from 'rxjs';
@@ -24,6 +25,7 @@ export class ReportComponent implements OnInit {
 
 	faArrowLeft = faArrowLeft;
 	faTrash = faTrash;
+	faPrint = faPrint;
 
 	renterName!: string;
 
@@ -37,19 +39,7 @@ export class ReportComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.rentService.getRents().subscribe((res) => {
-			var i = 0;
-			var newRent: Rent[] = [];
-			res.forEach((data) => {
-				if (data.userId == this.userId) {
-					newRent.push(res[i]);
-				}
-				i++;
-			});
-
-			this.sortByMonth(newRent);
-			this.originalRents = newRent;
-		});
+		this.getAllRents();
 
 		this.renterService.getRenters().subscribe((res) => {
 			var i = 0;
@@ -71,7 +61,9 @@ export class ReportComponent implements OnInit {
 
 	deleteReport(rent: Rent) {
 		if (confirm('Do you want to delete this?') == true) {
-			this.rentService.deleteRent(rent);
+			this.rentService.deleteRent(rent).then(() => {
+				this.getReport(rent.renterName);
+			});
 		}
 	}
 
@@ -79,6 +71,23 @@ export class ReportComponent implements OnInit {
 		this.rents = this.originalRents.filter(
 			(r) => r.renterName == renterName
 		);
+	}
+
+	getAllRents() {
+		this.rentService.getRents().subscribe((res) => {
+			var newRent: Rent[] = [];
+			var i = 0;
+
+			res.forEach((data) => {
+				if (data.userId == this.userId) {
+					newRent.push(res[i]);
+				}
+				i++;
+			});
+
+			this.sortByMonth(newRent);
+			this.originalRents = newRent;
+		});
 	}
 
 	sortByMonth(arr: Rent[]) {

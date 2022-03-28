@@ -1,0 +1,49 @@
+<div class="container">
+	<h3 class="text-center my-3">Renter Details</h3>
+	<div class="p-3">
+		<div class="row">
+			<div class="col-md-4 mb-3">
+				<p><b>Name:</b></p>
+				<p>{{ renter.fullName }}</p>
+			</div>
+			<div class="col-md-4 mb-3">
+				<p><b>Phone:</b></p>
+				<p>{{ renter.mobile }}</p>
+			</div>
+			<div class="col-md-4 mb-3">
+				<p><b>Email:</b></p>
+				<p>{{ renter.email }}</p>
+			</div>
+			<div class="col-md-4 mb-3">
+				<p><b>Building:</b></p>
+				<p>{{ renter.building }}</p>
+			</div>
+			<div class="col-md-4 mb-3">
+				<p><b>Floor:</b></p>
+				<p>{{ renter.floor }}</p>
+			</div>
+			<div class="col-md-4 mb-3">
+				<p><b>Flat:</b></p>
+				<p>{{ renter.flat }}</p>
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col-md-6 mb-3">
+				<p><b>Parmanent Address:</b></p>
+				<p>{{ renter.address }}</p>
+			</div>
+			<div class="col-md-6 mb-3">
+				<p><b>National ID:</b></p>
+				<p>{{ renter.nid }}</p>
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col-md-12">
+				<p class="text-center"><b>Deal with the landlord:</b></p>
+				<p class="text-center">{{ renter.deal }}</p>
+			</div>
+		</div>
+	</div>
+</div>

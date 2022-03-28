@@ -81,6 +81,10 @@ li {
 .brand-logo h1 {
 	font-weight: 700;
 }
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+}
 
 @media (max-width: 768px) {
 	.top-navbar {

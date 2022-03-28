@@ -4,6 +4,12 @@
 		><fa-icon [icon]="faArrowLeft" class="me-2"></fa-icon> Go to rent
 		payment</a
 	>
+	<a
+		*ngIf="rents.length > 0"
+		routerLink="/report"
+		class="btn btn-primary mb-3 ms-2"
+		><fa-icon [icon]="faPrint" class="me-2"></fa-icon> Print all</a
+	>
 	<form
 		class="form mb-3"
 		#reportForm="ngForm"
@@ -26,7 +32,7 @@
 		</div>
 	</form>
 
-	<table class="table">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th scope="col">Month</th>
@@ -57,16 +63,20 @@
 					}}৳
 				</td>
 				<td>{{ rent.rentType }}</td>
-				<td>{{ rent.paymentDate.slice(4, 15).replace(" ", ", ") }}</td>
+				<td>{{ rent.paymentDate }}</td>
 				<td class="text-center">
 					<button
-						class="btn btn-danger btn-sm"
+						class="btn btn-danger btn-sm me-4"
 						(click)="deleteReport(rent)"
 					>
 						<fa-icon [icon]="faTrash"></fa-icon>
+					</button>
+					<button class="btn btn-primary btn-sm">
+						<fa-icon [icon]="faPrint"></fa-icon>
 					</button>
 				</td>
 			</tr>
 		</tbody>
 	</table>
+	<p *ngIf="rents.length == 0">No data were found</p>
 </div>

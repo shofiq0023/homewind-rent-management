@@ -4,9 +4,11 @@ import { Router } from '@angular/router';
 import {
 	faArrowRight,
 	faBolt,
+	faCalendar,
 	faFire,
 	faTint,
 } from '@fortawesome/free-solid-svg-icons';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Timestamp } from 'firebase/firestore';
 import { Renter } from 'src/app/models/renter.model';
 import { RentService } from 'src/app/services/rent.service';
@@ -26,6 +28,7 @@ export class RentPayComponent implements OnInit {
 	faElectric = faBolt;
 	faGas = faFire;
 	faWater = faTint;
+	faCalender = faCalendar;
 
 	message!: string;
 
@@ -47,11 +50,16 @@ export class RentPayComponent implements OnInit {
 	renterId!: string;
 	renterName!: string;
 	rentAmount!: number;
-	rentMonth!: string;
-	rentType!: string;
+	rentMonth: string = this.months[new Date().getMonth()];
+	rentType: string = 'Active month';
 	electricBill!: number;
 	gasBill!: number;
 	waterBill!: number;
+	paymentDate: NgbDateStruct = {
+		year: new Date().getFullYear(),
+		month: new Date().getMonth() + 1,
+		day: new Date().getDate(),
+	};
 
 	constructor(
 		private router: Router,
@@ -90,12 +98,16 @@ export class RentPayComponent implements OnInit {
 			electricBill: this.electricBill,
 			gasBill: this.gasBill,
 			waterBill: this.waterBill,
-			paymentDate: new Date().toString(),
+			// paymentDate: 28 March, 2022
+			paymentDate: `${this.paymentDate.day} ${
+				this.months[this.paymentDate.month - 1]
+			}, ${this.paymentDate.year}`,
 		};
 
 		this.rentService.addRent(newRent).then(() => {
 			form.reset();
 			this.message = 'Rent information added';
+			setTimeout(() => (this.message = ''), 3000);
 		});
 	}
 
@@ -105,5 +117,13 @@ export class RentPayComponent implements OnInit {
 				this.renterName = r.fullName;
 			}
 		});
+	}
+
+	resetDate() {
+		this.paymentDate = {
+			year: new Date().getFullYear(),
+			month: new Date().getMonth() + 1,
+			day: new Date().getDate(),
+		};
 	}
 }

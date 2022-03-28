@@ -31,11 +31,11 @@ export class RenterAddComponent implements OnInit {
 	mobile!: string;
 	email!: string;
 	address!: string;
+	nid!: string;
 	deal!: string;
 	building!: string;
 	floor!: number;
 	flat!: string;
-	advance!: number;
 
 	buildings: Building[] = [];
 	floors: number[] = [];
@@ -76,11 +76,11 @@ export class RenterAddComponent implements OnInit {
 			mobile: this.mobile,
 			email: this.email,
 			address: this.address,
+			nid: this.nid,
 			deal: this.deal,
 			building: this.building,
 			floor: this.floor,
 			flat: this.flat,
-			advance: this.advance,
 		};
 
 		this.renterService.addRenter(newRenter).then(() => {

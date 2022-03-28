@@ -3,10 +3,7 @@
 	<a routerLink="/renter-add" class="btn btn-primary mb-3"
 		>Add Renter <fa-icon [icon]="faPlus" class="ms-2"></fa-icon>
 	</a>
-	<a routerLink="/bill-history" class="btn btn-primary mb-3 ms-2"
-		>Bill History <fa-icon [icon]="faInvoice" class="ms-2"></fa-icon>
-	</a>
-	<table class="table">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th scope="col">#</th>
@@ -19,7 +16,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let renter of renters; index as i">
+			<tr *ngFor="let renter of renters; index as i" class="renter-item">
 				<th scope="row">{{ i + 1 }}</th>
 				<td>{{ renter.fullName }}</td>
 				<td>{{ renter.mobile }}</td>
@@ -28,11 +25,18 @@
 				<td>{{ renter.flat }}</td>
 				<td class="text-center">
 					<button
-						class="btn btn-primary btn-sm me-4"
+						class="btn btn-success btn-sm me-2"
+						(click)="openDetail(renter)"
+					>
+						<fa-icon [icon]="faView"></fa-icon>
+					</button>
+					<button
+						class="btn btn-primary btn-sm me-2"
 						(click)="openModal(renter)"
 					>
 						<fa-icon [icon]="faPencil"></fa-icon>
 					</button>
+
 					<button
 						class="btn btn-danger btn-sm"
 						(click)="deleteRenter(renter)"

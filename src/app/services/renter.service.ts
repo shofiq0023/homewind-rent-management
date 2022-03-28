@@ -27,7 +27,7 @@ export class RenterService {
 		}) as Observable<Renter[]>;
 	}
 
-	getRenterById(id: string) {
+	getRenterById(id: string): Observable<Renter> {
 		const renterDocRef = doc(this.firestore, `renters/${id}`);
 		return docData(renterDocRef, { idField: 'id' }) as Observable<Renter>;
 	}

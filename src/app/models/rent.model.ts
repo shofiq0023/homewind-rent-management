@@ -1,4 +1,4 @@
-import { Timestamp } from 'firebase/firestore';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 export interface Rent {
 	id?: string;

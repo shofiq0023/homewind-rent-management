@@ -143,6 +143,38 @@
 			</div>
 		</div>
 
+		<div class="row align-items-center mb-3">
+			<div class="col-4">
+				<h5>Payment Date:</h5>
+			</div>
+			<div class="col-8">
+				<div class="input-group">
+					<button
+						class="btn btn-outline-dark"
+						(click)="d.toggle()"
+						type="button"
+					>
+						<fa-icon [icon]="faCalender"></fa-icon>
+					</button>
+					<input
+						type="text"
+						class="form-control"
+						name="paymentDate"
+						[(ngModel)]="paymentDate"
+						ngbDatepicker
+						#d="ngbDatepicker"
+					/>
+					<button
+						class="btn btn-outline-secondary"
+						type="button"
+						(click)="resetDate()"
+					>
+						Reset Date
+					</button>
+				</div>
+			</div>
+		</div>
+
 		<div class="row mt-4 mb-3">
 			<div class="col-4">
 				<input

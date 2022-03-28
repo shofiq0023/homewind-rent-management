@@ -4,12 +4,14 @@ import {
 	faPencilAlt,
 	faTrash,
 	faFileInvoiceDollar,
+	faSearch,
 } from '@fortawesome/free-solid-svg-icons';
 import { Renter } from 'src/app/models/renter.model';
 import { RenterService } from 'src/app/services/renter.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RenterModalComponent } from 'src/app/modal/renter-modal/renter-modal.component';
 import { Router } from '@angular/router';
+import { RenterDetailModalComponent } from 'src/app/modal/renter-detail-modal/renter-detail-modal.component';
 
 @Component({
 	selector: 'app-renter-list',
@@ -26,6 +28,7 @@ export class RenterListComponent implements OnInit {
 	faPencil = faPencilAlt;
 	faTrash = faTrash;
 	faInvoice = faFileInvoiceDollar;
+	faView = faSearch;
 
 	renters: Renter[] = [];
 	message: string = '';
@@ -64,6 +67,15 @@ export class RenterListComponent implements OnInit {
 
 	openModal(renter: Renter) {
 		const modalRef = this.modal.open(RenterModalComponent, {
+			size: 'lg',
+			centered: true,
+		});
+
+		modalRef.componentInstance.renter = renter;
+	}
+
+	openDetail(renter: Renter) {
+		const modalRef = this.modal.open(RenterDetailModalComponent, {
 			size: 'lg',
 			centered: true,
 		});
