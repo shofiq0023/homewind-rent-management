@@ -48,7 +48,9 @@ export class FlatListComponent implements OnInit {
 				}
 				i++;
 			});
-
+			newFlat.sort((a, b) =>
+				a.buildingName.localeCompare(b.buildingName)
+			);
 			this.flats = newFlat;
 		});
 	}

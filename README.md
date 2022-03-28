@@ -30,6 +30,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Documentation
 
+**Login with user `admin@gmail.com` and password `123456` as password to see demo data.**
+
 --> Navigating to `http://localhost:4200/` will redirect you to the **Login** page where you sign in with your email and password *(Logged in users are remembered by default in every browser)*.
 
 --> You can go to **Sign-up** page to register with an email and password.
@@ -42,6 +44,7 @@ You can view the full list too.
 ### Sidebar options
 
 - Dashboard
+
 	- 3 simple cards to show the count of total renter, building and flat.
 
 - Renter

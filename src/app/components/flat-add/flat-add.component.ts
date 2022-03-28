@@ -77,12 +77,20 @@ export class FlatAddComponent implements OnInit {
 		});
 	}
 
-	async setFloor(buildingName: string) {
-		let newFloor = await this.buildingService.getFloor(buildingName);
-		this.floors = [];
-		// @ts-ignore
-		for (let i = 1; i <= newFloor; i++) {
-			this.floors.push(i);
-		}
+	// async setFloor(buildingName: string) {
+	// 	let newFloor = await this.buildingService.getFloor(buildingName);
+	// 	this.floors = [];
+	// 	// @ts-ignore
+	// 	for (let i = 1; i <= newFloor; i++) {
+	// 		this.floors.push(i);
+	// 	}
+	// }
+
+	setFloor(buildingName: string) {
+		this.buildings.forEach((data) => {
+			if (data.name == buildingName) {
+				this.floors = data.floor;
+			}
+		});
 	}
 }

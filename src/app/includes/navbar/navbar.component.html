@@ -36,56 +36,6 @@
 								</a>
 							</li>
 
-							<!-- Renter -->
-							<li
-								class="navbar-item"
-								routerLinkActive="link-active"
-							>
-								<a
-									class="nav-link nav-link-main text-white p-3 mb-2 sidebar-link"
-									(click)="renterCollapse.toggle()"
-									[attr.aria-expanded]="!isRenterCollapsed"
-								>
-									<fa-icon [icon]="faUser"></fa-icon>
-									Renter
-									<fa-icon
-										[icon]="faAngleDown"
-										class="ms-1"
-									></fa-icon>
-								</a>
-								<div
-									#renterCollapse="ngbCollapse"
-									[(ngbCollapse)]="isRenterCollapsed"
-								>
-									<ul>
-										<!-- Renter list -->
-										<li class="navbar-item ms-4">
-											<a
-												routerLink="/renter-list"
-												class="nav-link"
-											>
-												<fa-icon
-													[icon]="faUserFriends"
-												></fa-icon>
-												Renter list
-											</a>
-										</li>
-										<!-- add renter -->
-										<li class="navbar-item ms-4">
-											<a
-												routerLink="/renter-add"
-												class="nav-link"
-											>
-												<fa-icon
-													[icon]="faUserPlus"
-												></fa-icon>
-												Add renter
-											</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-
 							<!-- building -->
 							<li
 								class="navbar-item"
@@ -180,6 +130,56 @@
 													[icon]="faHouseUser"
 												></fa-icon>
 												Add Flat
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<!-- Renter -->
+							<li
+								class="navbar-item"
+								routerLinkActive="link-active"
+							>
+								<a
+									class="nav-link nav-link-main text-white p-3 mb-2 sidebar-link"
+									(click)="renterCollapse.toggle()"
+									[attr.aria-expanded]="!isRenterCollapsed"
+								>
+									<fa-icon [icon]="faUser"></fa-icon>
+									Renter
+									<fa-icon
+										[icon]="faAngleDown"
+										class="ms-1"
+									></fa-icon>
+								</a>
+								<div
+									#renterCollapse="ngbCollapse"
+									[(ngbCollapse)]="isRenterCollapsed"
+								>
+									<ul>
+										<!-- Renter list -->
+										<li class="navbar-item ms-4">
+											<a
+												routerLink="/renter-list"
+												class="nav-link"
+											>
+												<fa-icon
+													[icon]="faUserFriends"
+												></fa-icon>
+												Renter list
+											</a>
+										</li>
+										<!-- add renter -->
+										<li class="navbar-item ms-4">
+											<a
+												routerLink="/renter-add"
+												class="nav-link"
+											>
+												<fa-icon
+													[icon]="faUserPlus"
+												></fa-icon>
+												Add renter
 											</a>
 										</li>
 									</ul>

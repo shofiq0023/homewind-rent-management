@@ -41,7 +41,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let rent of rents">
+			<tr *ngFor="let rent of rents; index as rentMonth">
 				<td>{{ rent.rentMonth }}</td>
 				<td>{{ rent.renterName }}</td>
 				<td>{{ rent.rentAmount.toLocaleString("en-IN") }}৳</td>

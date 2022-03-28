@@ -47,6 +47,7 @@ export class ReportComponent implements OnInit {
 				i++;
 			});
 
+			this.sortByMonth(newRent);
 			this.originalRents = newRent;
 		});
 
@@ -78,5 +79,24 @@ export class ReportComponent implements OnInit {
 		this.rents = this.originalRents.filter(
 			(r) => r.renterName == renterName
 		);
+	}
+
+	sortByMonth(arr: Rent[]) {
+		var months: string[] = [
+			'January',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			'July',
+			'Augast',
+			'September',
+			'November',
+			'December',
+		];
+		arr.sort((a, b) => {
+			return months.indexOf(a.rentMonth) - months.indexOf(b.rentMonth);
+		});
 	}
 }

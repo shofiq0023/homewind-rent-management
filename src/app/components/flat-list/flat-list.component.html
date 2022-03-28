@@ -8,8 +8,8 @@
 		<thead>
 			<tr>
 				<th scope="col">#</th>
-				<th scope="col">Flat number</th>
 				<th scope="col">Building name</th>
+				<th scope="col">Flat number</th>
 				<th scope="col">Floor</th>
 				<th scope="col">Rented</th>
 				<th scope="col" class="text-center">Manage</th>
@@ -18,8 +18,8 @@
 		<tbody>
 			<tr *ngFor="let flat of flats; index as i">
 				<th scope="row">{{ i + 1 }}</th>
-				<td>{{ flat.flatNumber }}</td>
 				<td>{{ flat.buildingName }}</td>
+				<td>{{ flat.flatNumber }}</td>
 				<td>{{ flat.buildingFloor }}</td>
 				<td>{{ flat.rented == "true" ? "Yes" : "No" }}</td>
 				<td class="text-center">
