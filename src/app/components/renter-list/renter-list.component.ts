@@ -4,7 +4,7 @@ import {
 	faPencilAlt,
 	faTrash,
 	faFileInvoiceDollar,
-	faSearch,
+	faEye,
 } from '@fortawesome/free-solid-svg-icons';
 import { Renter } from 'src/app/models/renter.model';
 import { RenterService } from 'src/app/services/renter.service';
@@ -28,7 +28,7 @@ export class RenterListComponent implements OnInit {
 	faPencil = faPencilAlt;
 	faTrash = faTrash;
 	faInvoice = faFileInvoiceDollar;
-	faView = faSearch;
+	faView = faEye;
 
 	renters: Renter[] = [];
 	message: string = '';
