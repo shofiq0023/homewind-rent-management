@@ -67,6 +67,7 @@ export class NavbarComponent implements OnInit {
 		if (confirm('Do you want to sign out?') == true) {
 			localStorage.setItem('loggedIn', JSON.stringify(false));
 			localStorage.setItem('userId', JSON.stringify(''));
+			localStorage.setItem('company', JSON.stringify(''));
 			this.myRoute.navigate(['login']);
 			signOut(this.auth);
 		}

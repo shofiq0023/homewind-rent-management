@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { CustomUser } from 'src/app/models/customUser.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
 	selector: 'app-signup',
@@ -9,13 +11,18 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 	email!: string;
+	company!: string;
 	password: string = '';
 	conPassword: string = '';
 	message!: string;
 
 	disableSubmit: boolean = true;
 
-	constructor(private router: Router, private auth: Auth) {}
+	constructor(
+		private router: Router,
+		private auth: Auth,
+		private userService: UserService
+	) {}
 
 	ngOnInit(): void {
 		//@ts-ignore
@@ -47,6 +54,12 @@ export class SignupComponent implements OnInit {
 				}
 			})
 		) {
+			const newUser: CustomUser = {
+				email: this.email,
+				company: this.company,
+				createdAt: new Date(),
+			};
+			this.userService.addUser(newUser);
 			this.router.navigate(['login']);
 		}
 	}

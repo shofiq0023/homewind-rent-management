@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {
 	faArrowLeft,
-	faArrowRight,
 	faPrint,
 	faTrash,
 } from '@fortawesome/free-solid-svg-icons';
-import { filter } from 'rxjs';
 import { Rent } from 'src/app/models/rent.model';
 import { Renter } from 'src/app/models/renter.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RentService } from 'src/app/services/rent.service';
 import { RenterService } from 'src/app/services/renter.service';
+import { RentInvoiceComponent } from 'src/app/invoice/rent-invoice/rent-invoice.component';
+import { RentInvoiceSingleComponent } from 'src/app/invoice/rent-invoice-single/rent-invoice-single.component';
 
 @Component({
 	selector: 'app-report',
@@ -35,7 +36,8 @@ export class ReportComponent implements OnInit {
 
 	constructor(
 		private rentService: RentService,
-		private renterService: RenterService
+		private renterService: RenterService,
+		private modal: NgbModal
 	) {}
 
 	ngOnInit(): void {
@@ -107,5 +109,23 @@ export class ReportComponent implements OnInit {
 		arr.sort((a, b) => {
 			return months.indexOf(a.rentMonth) - months.indexOf(b.rentMonth);
 		});
+	}
+
+	printThis() {
+		const modalRef = this.modal.open(RentInvoiceComponent, {
+			size: 'xl',
+			centered: true,
+		});
+
+		modalRef.componentInstance.rents = this.rents;
+	}
+
+	printSingle(rent: Rent) {
+		const modalRef = this.modal.open(RentInvoiceSingleComponent, {
+			size: 'lg',
+			centered: true,
+		});
+
+		modalRef.componentInstance.rent = rent;
 	}
 }

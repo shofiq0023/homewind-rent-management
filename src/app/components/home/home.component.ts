@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
 	isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn'));
 	// @ts-ignore
 	userId: string = JSON.parse(localStorage.getItem('userId'));
+	company: string = 'The Homewind';
 
 	faUserList = faUserFriends;
 	faList = faList;
@@ -45,6 +46,8 @@ export class HomeComponent implements OnInit {
 		if (JSON.parse(localStorage.getItem('loggedIn')) == false) {
 			this.router.navigateByUrl('/login');
 		}
+		// @ts-ignore
+		this.company = JSON.parse(localStorage.getItem('company'));
 
 		this.renterService.getRenters().subscribe((renter) => {
 			var newRenters: Renter[] = [];

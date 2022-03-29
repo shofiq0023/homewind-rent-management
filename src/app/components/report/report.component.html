@@ -4,12 +4,16 @@
 		><fa-icon [icon]="faArrowLeft" class="me-2"></fa-icon> Go to rent
 		payment</a
 	>
-	<a
+	<button
 		*ngIf="rents.length > 0"
 		routerLink="/report"
 		class="btn btn-primary mb-3 ms-2"
-		><fa-icon [icon]="faPrint" class="me-2"></fa-icon> Print all</a
+		type="button"
+		(click)="printThis()"
 	>
+		<fa-icon [icon]="faPrint" class="me-2"></fa-icon> Print all
+	</button>
+
 	<form
 		class="form mb-3"
 		#reportForm="ngForm"
@@ -39,6 +43,7 @@
 				<th scope="col">Name</th>
 				<th scope="col">Rent</th>
 				<th scope="col">Gas</th>
+				<th scope="col">Electric</th>
 				<th scope="col">Water</th>
 				<th scope="col">Total amount</th>
 				<th scope="col">Rent Type</th>
@@ -47,17 +52,19 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let rent of rents; index as rentMonth">
+			<tr *ngFor="let rent of rents">
 				<td>{{ rent.rentMonth }}</td>
 				<td>{{ rent.renterName }}</td>
 				<td>{{ rent.rentAmount.toLocaleString("en-IN") }}৳</td>
 				<td>{{ rent.gasBill.toLocaleString("en-IN") }}৳</td>
+				<td>{{ rent.electricBill.toLocaleString("en-IN") }}৳</td>
 				<td>{{ rent.waterBill.toLocaleString("en-IN") }}৳</td>
 				<td>
 					{{
 						(
 							rent.rentAmount +
 							rent.gasBill +
+							rent.electricBill +
 							rent.waterBill
 						).toLocaleString("en-IN")
 					}}৳
@@ -71,7 +78,10 @@
 					>
 						<fa-icon [icon]="faTrash"></fa-icon>
 					</button>
-					<button class="btn btn-primary btn-sm">
+					<button
+						class="btn btn-primary btn-sm"
+						(click)="printSingle(rent)"
+					>
 						<fa-icon [icon]="faPrint"></fa-icon>
 					</button>
 				</td>

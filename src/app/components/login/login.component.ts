@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
 	selector: 'app-login',
@@ -12,7 +13,11 @@ export class LoginComponent implements OnInit {
 	password!: string;
 	message: string = '';
 
-	constructor(public router: Router, private auth: Auth) {}
+	constructor(
+		public router: Router,
+		private auth: Auth,
+		private userService: UserService
+	) {}
 
 	ngOnInit(): void {
 		//@ts-ignore
@@ -36,7 +41,18 @@ export class LoginComponent implements OnInit {
 				'userId',
 				JSON.stringify(this.auth.currentUser?.uid)
 			);
-			this.router.navigate(['home']);
+			this.userService.getUsers().subscribe((res) => {
+				res.forEach((data) => {
+					if (data.email == this.auth.currentUser?.email) {
+						localStorage.setItem(
+							'company',
+							JSON.stringify(data.company)
+						);
+						return;
+					}
+				});
+				this.router.navigate(['home']);
+			});
 		}
 	}
 }

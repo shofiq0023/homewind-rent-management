@@ -1,0 +1,91 @@
+<div class="container">
+	<div id="print-section">
+		<h3 class="text-center py-3 mb-3">{{ company }}</h3>
+
+		<div class="row">
+			<div class="col-4 mb-3">
+				<h5>Name:</h5>
+				<h6>{{ renter?.fullName }}</h6>
+			</div>
+			<div class="col-4 mb-3">
+				<h5>Mobile:</h5>
+				<h6>{{ renter?.mobile }}</h6>
+			</div>
+			<div class="col-4 mb-3">
+				<h5>Building:</h5>
+				<h6>{{ renter?.building }}</h6>
+			</div>
+			<div class="col-4 mb-3">
+				<h5>Email:</h5>
+				<h6>{{ renter?.email }}</h6>
+			</div>
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Month</th>
+					<th scope="col">Name</th>
+					<th scope="col">Rent</th>
+					<th scope="col">Gas</th>
+					<th scope="col">Electric</th>
+					<th scope="col">Water</th>
+					<th scope="col">Total amount</th>
+					<th scope="col">Rent Type</th>
+					<th scope="col">Payment Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let rent of rents; index as i">
+					<td>{{ i + 1 }}</td>
+					<td>{{ rent.rentMonth }}</td>
+					<td>{{ rent.renterName }}</td>
+					<td>{{ rent.rentAmount.toLocaleString("en-IN") }}৳</td>
+					<td>{{ rent.gasBill.toLocaleString("en-IN") }}৳</td>
+					<td>{{ rent.electricBill.toLocaleString("en-IN") }}৳</td>
+					<td>{{ rent.waterBill.toLocaleString("en-IN") }}৳</td>
+					<td>
+						{{
+							(
+								rent.rentAmount +
+								rent.gasBill +
+								rent.electricBill +
+								rent.waterBill
+							).toLocaleString("en-IN")
+						}}৳
+					</td>
+					<td>{{ rent.rentType }}</td>
+					<td>{{ rent.paymentDate }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="row mb-3">
+			<div class="col-4">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Total Month</th>
+							<th scope="col">Rent Sum</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{ rents.length }}</td>
+							<td>{{ rentSum.toLocaleString("en-IN") }}৳</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<button
+		[useExistingCss]="true"
+		printSectionId="print-section"
+		ngxPrint
+		type="button"
+		class="btn btn-primary my-3"
+	>
+		Print <fa-icon [icon]="faPrint"></fa-icon>
+	</button>
+</div>

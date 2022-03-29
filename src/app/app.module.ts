@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxPrintModule } from 'ngx-print';
 
 // Firebase
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -30,6 +31,8 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { RentPayComponent } from './components/rent-pay/rent-pay.component';
 import { ReportComponent } from './components/report/report.component';
 import { RenterDetailModalComponent } from './modal/renter-detail-modal/renter-detail-modal.component';
+import { RentInvoiceComponent } from './invoice/rent-invoice/rent-invoice.component';
+import { RentInvoiceSingleComponent } from './invoice/rent-invoice-single/rent-invoice-single.component';
 
 @NgModule({
 	declarations: [
@@ -49,12 +52,15 @@ import { RenterDetailModalComponent } from './modal/renter-detail-modal/renter-d
 		SignupComponent,
 		RentPayComponent,
 		ReportComponent,
-  RenterDetailModalComponent,
+		RenterDetailModalComponent,
+		RentInvoiceComponent,
+  RentInvoiceSingleComponent,
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		NgbModule,
+		NgxPrintModule,
 		FontAwesomeModule,
 		provideFirebaseApp(() => initializeApp(environment.firebase)),
 		provideFirestore(() => getFirestore()),

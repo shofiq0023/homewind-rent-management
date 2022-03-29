@@ -1,0 +1,85 @@
+<div class="container">
+	<div id="print-section">
+		<h3 class="text-center my-3 pb-2">{{ company }}</h3>
+
+		<div class="renter-info">
+			<div class="row pb-3">
+				<div class="col-4 mb-3">
+					<h5><b>Name:</b> {{ renter?.fullName }}</h5>
+				</div>
+				<div class="col-4 mb-3">
+					<h5><b>Building:</b> {{ renter?.building }}</h5>
+				</div>
+				<div class="col-4 mb-3">
+					<h5><b>Mobile:</b> {{ renter?.mobile }}</h5>
+				</div>
+				<div class="col-6 mb-3">
+					<h5><b>Email:</b> {{ renter?.email }}</h5>
+				</div>
+			</div>
+		</div>
+
+		<div class="rent-info">
+			<div class="row py-3">
+				<div class="col-4 mb-3">
+					<h6>Rent Month:</h6>
+					<p>{{ rent.rentMonth }}</p>
+				</div>
+				<div class="col-4 mb-3">
+					<h6>Rent Type:</h6>
+					<p>{{ rent.rentType }}</p>
+				</div>
+				<div class="col-4 mb-3">
+					<h6>Payment Date:</h6>
+					<p>{{ rent.paymentDate }}</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="rent-payment">
+			<div class="row py-3">
+				<div class="col-3 mb-3">
+					<h6>Rent amount:</h6>
+					<p>{{ rent.rentAmount.toLocaleString("en-IN") }}৳</p>
+				</div>
+				<div class="col-3 mb-3">
+					<h6>Electric Bill:</h6>
+					<p>{{ rent.electricBill.toLocaleString("en-IN") }}৳</p>
+				</div>
+				<div class="col-3 mb-3">
+					<h6>Gas Bill:</h6>
+					<p>{{ rent.gasBill.toLocaleString("en-IN") }}৳</p>
+				</div>
+				<div class="col-3 mb-3">
+					<h6>Water Bill:</h6>
+					<p>{{ rent.waterBill.toLocaleString("en-IN") }}৳</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-3 mb-5">
+			<h5>Total payment:</h5>
+			<h4>
+				<b
+					>{{
+						(
+							rent.electricBill +
+							rent.gasBill +
+							rent.waterBill +
+							rent.rentAmount
+						).toLocaleString("en-IN")
+					}}৳</b
+				>
+			</h4>
+		</div>
+	</div>
+	<button
+		[useExistingCss]="true"
+		printSectionId="print-section"
+		ngxPrint
+		type="button"
+		class="btn btn-primary my-3"
+	>
+		Print <fa-icon [icon]="faPrint"></fa-icon>
+	</button>
+</div>

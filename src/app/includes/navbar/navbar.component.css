@@ -1,3 +1,9 @@
 .signout-btn {
 	cursor: pointer;
 }
+.sidebar {
+	overflow-y: scroll;
+}
+.sidebar::-webkit-scrollbar {
+	width: 1px;
+}
