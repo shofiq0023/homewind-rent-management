@@ -32,7 +32,7 @@ node -v
 npm -v
 ```
 
-If nodejs and npm is not installed then goto [nodejs.org](nodejs.org) and download nodejs and npm or on linux use
+If nodejs and npm is not installed then goto [nodejs.org](https://nodejs.org/en/) and download nodejs and npm or on linux use
 
 ```
 sudo apt install nodejs
