@@ -113,13 +113,6 @@ You can view the full list too.
 
 	- 3 simple cards to show the count of total renter, building and flat.
 
-- Renter
-
-    - Renter List -> View the full list of all the renters.<br>
-	You can **Edit, Delete** a renter Information from here.
-
-    - Add Renter -> You can **add** a new renter into an **existing building according to floor and flat**.
-
 - Building
 
     - Building List -> View the full list of all the existing building you added.<br>
@@ -134,6 +127,13 @@ You can view the full list too.
 
     - Add Flat -> You can **add** a new Flat to an existing **Building according to floor**.
 
+- Renter
+
+    - Renter List -> View the full list of all the renters.<br>
+	You can **Edit, Delete** a renter Information from here.
+
+    - Add Renter -> You can **add** a new renter into an **existing building according to floor and flat**.
+
 - Rent Pay
 
 	- Add rent payment information about a renter.
@@ -144,4 +144,13 @@ You can view the full list too.
 			- Due rent: Rent payment of a **due month**.
 			- Advance: **Advance payment** for when adding a new renter.
     
-	
+- Report
+
+	- See a report of an indivisual **Renter** according to month.
+
+	- Print option -> Can print **sinlge month report** or you can print a **list of payment month** of a renter.
+
+<br />
+<br />
+
+**Note:** Verification system for Emails and National ID is currently not used for this version of the project.
