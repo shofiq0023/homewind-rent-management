@@ -46,6 +46,12 @@ if Not then install angular cli with npm
 ```
 npm install -g @angular/cli
 ```
+
+After downloading the project from github install the dependencies to run the project with:
+```
+npm install
+```
+
 <hr />
 
 Use `ng serve` to run the project in `http://localhost:4200/`.
@@ -79,6 +85,20 @@ To install the Firebase sdk and to login to firebase
 ```
 npm install -g firebase
 npm install -g firebase-tools
+```
+
+**Note:** if you get any permission error while installing firebase then you can run the terminal as and **administrator**.
+
+**If you are in linux:**
+```
+sudo npm install -g firebase
+sudo npm install -g firebase-tools 
+```
+
+### Firebase login from CLI
+
+After downloading the project open the project in terminal and login to firebase with firebase CLI:
+```
 firebase login:ci
 ```
 
@@ -91,6 +111,62 @@ ng add @angular/fire
 ```
 
 Then select the Authentication and Firestore option to add them to your project using your firebase account, project and app. (If you logged in using firebase cli).
+
+<hr />
+
+## Firebase Usage Cost
+
+There is 2 payment plan in Firebase
+
+1. Spark Plan (No-Cost)
+	- This is the default plan. No cost usage.
+
+2. Blaze Plan (Pay as you go)
+	- This is the paid plan where you are charged by firebase usage.
+
+### Cost for services:
+
+**Authentication:**
+- *Spark plan:* 10k per month.
+- *Blaze plan:* $0.06 per verification
+
+**Cloud Firestore (Cloud Database):**
+
+Per Unit = Per 100,000 documents
+
+- *Spark plan:* 1GB Free
+	- Document writes: 20k per day.
+	- Document reads: 50k per day.
+	- Document deletes: 20k per day.
+
+- *Blaze plan:* $0.108 per additional GB after free storage.
+	- Document writes: $0.18 per unit after free quota.
+	- Document reads: $0.06 per unit after free quota.
+	- Document deletes: $0.02 per unit after free quota.
+
+**Firebase hosting:**
+
+- *Spark plan:*
+	- Storage: 10GB
+	- Data transfer: 360MB per day
+
+- *Blaze plan:*
+	- Storage: $0.026 per GB
+	- Data transfer: $0.15 per GB
+
+**Firebase Cloud Storage:**
+
+- *Spark plan:*
+	- GB Stored: 5GB
+	- GB downloaded: 1GB per day
+	- Upload operations: 20k per day
+	- Download operations: 50k per day
+
+- *Blaze plan:*
+	- GB Stored: $0.026 per GB
+	- GB downloaded: $0.12 per GB
+	- Upload operations: $0.05 per 10k
+	- Download operations: $0.004 per 10k
 
 <hr />
 
